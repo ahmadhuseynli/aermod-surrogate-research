@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you refer to this research project, please cite the repository release."
+title: "Atmospheric Dispersion Surrogate Research: AERMOD Emulator Prototype"
+type: software
+authors:
+  - alias: "ahmadhuseynli"
+version: 0.1.0
+date-released: 2026-09-17
+repository-code: "https://github.com/ahmadhuseynli/aermod-surrogate-research"
+url: "https://ahmadhuseynli.github.io/aermod-surrogate-research/"
+abstract: >-
+  Independent research prototype investigating whether a machine-learning surrogate can reproduce
+  AERMOD-type hourly concentration fields inside a restricted, explicitly validated domain.
+keywords:
+  - AERMOD
+  - atmospheric dispersion
+  - air quality
+  - surrogate modelling
+  - machine learning
+  - environmental modelling
