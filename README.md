@@ -6,6 +6,10 @@ This project started with a simple question: if AERMOD is used as the reference 
 
 The work is still a research prototype. It is **not** a regulatory replacement for AERMOD, and it is not presented as one.
 
+**Public project page:** https://ahmadhuseynli.github.io/aermod-surrogate-research/  
+**Technical note:** https://ahmadhuseynli.github.io/aermod-surrogate-research/assets/AERMOD_SURROGATE_TECHNICAL_NOTE_v0.1.pdf  
+**v0.1.0 release:** https://github.com/ahmadhuseynli/aermod-surrogate-research/releases/tag/v0.1.0
+
 ## Where the project stands
 
 The current frozen prototype has been tested on two meteorological years that were kept untouched until the model and evaluation rules were fixed.
@@ -48,7 +52,7 @@ A large part of the research has come from failed ideas. For example, an early a
 - [`RESEARCH_HISTORY.md`](RESEARCH_HISTORY.md) - the main scientific turns, including failures.
 - [`ROADMAP.md`](ROADMAP.md) - the next research questions.
 - [`data/`](data/) - small public summary tables only; no training data or model weights.
-- [`technical_report/`](technical_report/) - a short public technical note.
+- [`technical_report/`](technical_report/) - the public technical note in PDF and DOCX form.
 - [`docs/`](docs/) - the GitHub Pages website.
 
 ## Reproducibility and evidence
@@ -65,7 +69,7 @@ This work is an independent research prototype. It is not affiliated with or end
 
 **v0.1.0 - public research prototype**
 
-This release documents the project state reached on 17 September 2026. The current model is frozen for the reported 2018 and 2019 evaluations.
+This release documents the project state reached on 17 September 2026. The current model is frozen for the reported 2018 and 2019 evaluations. The release page also contains the technical note as direct PDF and DOCX downloads.
 
 ## Reference model
 
