@@ -1,0 +1,21 @@
+{
+  "creators": [
+    {
+      "name": "Huseynli, Ahmad",
+      "type": "ProjectMember"
+    }
+  ],
+  "title": "Atmospheric Dispersion Surrogate Research: AERMOD Emulator Prototype",
+  "version": "0.1.0",
+  "access_right": "open",
+  "keywords": [
+    "AERMOD",
+    "atmospheric dispersion",
+    "air quality",
+    "surrogate modelling",
+    "machine learning",
+    "environmental modelling"
+  ],
+  "upload_type": "software",
+  "language": "eng"
+}
