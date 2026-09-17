@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Independent research project on machine-learning surrogates for AERMOD-type hourly atmospheric dispersion fields.">
+  <title>Atmospheric Dispersion Surrogate Research</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="wrap row">
+    <div class="brand">Atmospheric Dispersion Surrogate Research</div>
+    <nav>
+      <a href="#project">Project</a>
+      <a href="#results">Results</a>
+      <a href="#limits">Limits</a>
+      <a href="#history">History</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Independent environmental modelling research</div>
+    <h1>Can a fast surrogate learn an AERMOD concentration field without pretending to replace AERMOD?</h1>
+    <p>This project uses AERMOD as a teacher and asks a narrower question: inside a clearly defined domain, can a separate model reproduce the hourly spatial response well enough to be useful for fast prediction and research?</p>
+    <div class="buttons">
+      <a class="button" href="assets/AERMOD_SURROGATE_TECHNICAL_NOTE_v0.1.pdf">Read the technical note</a>
+      <a class="button secondary" href="https://github.com/ahmadhuseynli/aermod-surrogate-research">View the repository</a>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="wrap">
+    <h2>The project in one minute</h2>
+    <p class="lead">The first prototype is deliberately small: one elevated point source, SO2, flat terrain, no downwash, no chemistry or deposition, and an hourly concentration field as the target. That makes it possible to study the surrogate problem without mixing in every AERMOD capability at once.</p>
+    <div class="flow">
+      <div>Source and meteorology</div>
+      <div>Plume-relative geometry</div>
+      <div>Frozen surrogate</div>
+      <div>Hourly concentration field</div>
+    </div>
+    <div class="note"><strong>AERMOD remains the reference.</strong> The surrogate is an independent research prototype, not a regulatory substitute.</div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <h2>Current validation result</h2>
+    <p class="lead">The model and evaluation rules were fixed before the 2019 and 2018 teacher concentration fields were opened. Both tests used the same frozen surrogate.</p>
+    <div class="grid">
+      <div class="card"><div class="metric">24.72%</div><div class="label">2018 whole-field error reduction vs frozen baseline</div></div>
+      <div class="card"><div class="metric">23.77%</div><div class="label">2019 whole-field error reduction vs frozen baseline</div></div>
+      <div class="card"><div class="metric">34-37%</div><div class="label">amplitude-error reduction across the two untouched years</div></div>
+    </div>
+    <h3 style="margin-top:32px">Frozen temporal validation</h3>
+    <table>
+      <thead><tr><th>Year</th><th>Baseline field L1</th><th>Frozen surrogate</th><th>Relative improvement</th></tr></thead>
+      <tbody>
+        <tr><td>2018</td><td>0.16904</td><td>0.12725</td><td>24.72%</td></tr>
+        <tr><td>2019</td><td>0.17218</td><td>0.13125</td><td>23.77%</td></tr>
+      </tbody>
+    </table>
+    <p>The years were not copies of the same hourly weather. Same-calendar wind-speed correlation was 0.043 and the median absolute wind-direction difference was 75 degrees. The claim is therefore same-domain temporal generalisation, not transfer to a different climate or site.</p>
+  </div>
+</section>
+
+<section id="limits">
+  <div class="wrap two">
+    <div>
+      <h2>What is working</h2>
+      <p>The surrogate repeatedly improves the full concentration field and the longitudinal amplitude response on unseen years within the restricted domain.</p>
+      <p>Plume-relative geometry, denser spatial sampling and strict separation between development years and fresh validation years have all been important.</p>
+    </div>
+    <div>
+      <h2>What is not solved</h2>
+      <p>Extreme peak magnitude and peak location are still unreliable. The model has not been validated for other sites, source families, complex terrain, building downwash, multiple sources or chemistry.</p>
+      <p>Those limits are part of the result, not footnotes.</p>
+    </div>
+  </div>
+</section>
+
+<section id="history">
+  <div class="wrap">
+    <h2>Why the failures matter</h2>
+    <p class="lead">The project changed direction several times because the evidence said it should.</p>
+    <div class="grid">
+      <div class="card"><h3>Coarse grid</h3><p>An early 10-degree angular teacher grid missed narrow stable plumes. More ML capacity could not recover spatial information that was never sampled properly.</p></div>
+      <div class="card"><h3>Fresh-year failure</h3><p>A 2024 test showed that a development crosswind spacing was still too coarse. That year was then treated as spent evidence rather than reused as a fresh confirmation.</p></div>
+      <div class="card"><h3>Amplitude error</h3><p>A 2025 test showed that the dominant remaining problem was longitudinal amplitude and dilution, which led to the current residual-correction design.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Next question</h2>
+    <p class="lead">The project is now at a useful stopping point for the first narrow prototype. The next expansion should address one new scientific boundary at a time: peak/tail behaviour, a genuinely different site or climate, or variable source physics.</p>
+    <div class="buttons">
+      <a class="button" href="assets/AERMOD_SURROGATE_TECHNICAL_NOTE_v0.1.pdf">Technical note (PDF)</a>
+      <a class="button secondary" href="https://www.epa.gov/scram/air-quality-dispersion-modeling-preferred-and-recommended-models">U.S. EPA AERMOD documentation</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">Independent research project. Not affiliated with or endorsed by the U.S. EPA. The surrogate is not an approved regulatory replacement for AERMOD.</div>
+</footer>
+</body>
+</html>
