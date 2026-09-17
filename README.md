@@ -1,5 +1,7 @@
 # Atmospheric Dispersion Surrogate Research
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22819727.svg)](https://doi.org/10.5281/zenodo.22819727)
+
 **Independent research project exploring whether a machine-learning surrogate can reproduce AERMOD-type hourly concentration fields inside a carefully limited domain.**
 
 This project started with a simple question: if AERMOD is used as the reference model, can a separate surrogate learn enough of its hourly dispersion response to make fast predictions for cases it has not seen before?
@@ -8,7 +10,9 @@ The work is still a research prototype. It is **not** a regulatory replacement f
 
 **Public project page:** https://ahmadhuseynli.github.io/aermod-surrogate-research/  
 **Technical note:** https://ahmadhuseynli.github.io/aermod-surrogate-research/assets/AERMOD_SURROGATE_TECHNICAL_NOTE_v0.1.pdf  
-**v0.1.0 release:** https://github.com/ahmadhuseynli/aermod-surrogate-research/releases/tag/v0.1.0
+**Latest archival release:** https://github.com/ahmadhuseynli/aermod-surrogate-research/releases/tag/v0.1.1  
+**Project DOI (all versions):** https://doi.org/10.5281/zenodo.22819727  
+**Version DOI (v0.1.1):** https://doi.org/10.5281/zenodo.22819728
 
 ## Where the project stands
 
@@ -67,9 +71,11 @@ This work is an independent research prototype. It is not affiliated with or end
 
 ## Current release
 
-**v0.1.0 - public research prototype**
+**v0.1.1 - Zenodo archival release**
 
-This release documents the project state reached on 17 September 2026. The current model is frozen for the reported 2018 and 2019 evaluations. The release page also contains the technical note as direct PDF and DOCX downloads.
+This release preserves the same scientific/model state reported in v0.1.0. No model, validation result or reported conclusion changed. v0.1.1 adds citation and Zenodo metadata so the public research prototype has a permanent DOI.
+
+For a citation tied to this exact archived version, use **10.5281/zenodo.22819728**. For a citation that should always resolve to the latest archived version of the project, use **10.5281/zenodo.22819727**.
 
 ## Reference model
 
