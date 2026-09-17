@@ -1,6 +1,6 @@
 ---
 name: Research question
-description: Ask about the public research method, results or limitations
+description: Ask about the method, reported results or current limits
 title: "[Question] "
 labels: []
 assignees: []
@@ -8,8 +8,6 @@ assignees: []
 
 ## Question
 
-Please describe the point you would like clarified.
+What would you like clarified?
 
-## Context
-
-If relevant, link to the section of the repository or technical note you are referring to.
+If it relates to a particular result, please link the relevant page, table or section of the technical note.

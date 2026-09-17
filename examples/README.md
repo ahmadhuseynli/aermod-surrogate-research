@@ -1,7 +1,7 @@
 # Public example material
 
-The first public release does not include the trained model, residual library or teacher field data.
+The trained surrogate, residual library and teacher field are not included in this public archive.
 
-The file `input_schema_example.csv` is only a small **synthetic schema example** showing the type of fields used by the research workflow. The numbers are illustrative and are not AERMOD output, training data or a surrogate prediction.
+`input_schema_example.csv` is only a small synthetic example showing the kind of fields used by the workflow. The values are illustrative. They are not AERMOD output, training data or surrogate predictions.
 
-A reproducible public inference example may be added in a later release after the model/IP boundary is decided.
+A runnable public inference example can be added later if the model/IP boundary changes.

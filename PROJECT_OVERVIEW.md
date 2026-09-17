@@ -1,51 +1,42 @@
 # Project overview
 
-## The question
+## What I was trying to find out
 
-AERMOD can produce detailed hourly concentration fields, but repeated model execution becomes expensive when the number of meteorological states, receptors or scenarios grows. This project asks whether a separate surrogate can learn the reference model's response well enough to make fast predictions inside a known and validated domain.
+The project started with a fairly practical question. AERMOD can generate an hourly concentration field, but running large numbers of cases repeatedly is slow. Could a separate surrogate learn the AERMOD response well enough to reproduce that field quickly for new cases inside a known domain?
 
-The goal is not to train on annual maxima or a few summary statistics. The target is the hourly concentration field itself.
+I did not want to train on annual maxima or a handful of summary statistics. The main target from the start was the hourly receptor field itself.
 
-In simple form:
+In shorthand:
 
-**source + meteorology + receptor geometry -> surrogate -> hourly concentration field**
+**source + meteorological state + plume-relative receptor geometry → surrogate → hourly concentration field**
 
-AERMOD is used as the teacher and remains the reference for verification and regulatory work.
+AERMOD is the teacher in this work. It remains the verification model and, where formal regulatory modelling is required, the regulatory model.
 
-## Why the first scope is deliberately small
+## Why I kept the first case small
 
-The project started with one elevated point source, SO2, flat terrain and no downwash, chemistry or deposition. Keeping the source physics fixed made it possible to separate one question from many others: can the atmospheric and spatial response be learned at all?
+The first prototype uses one fixed elevated point source, SO2, flat terrain and no downwash, chemistry or deposition. That is obviously much smaller than the full AERMOD problem. It was deliberate.
 
-That small scope also made failures easier to diagnose. A poor result could be traced to meteorology, geometry, target design, spatial resolution or the learner instead of being mixed together with terrain, multiple source types and other complications.
+With the source physics fixed, a bad result is easier to diagnose. I can ask whether the problem came from the meteorology, the target, receptor geometry, spatial sampling or the learner itself instead of mixing all of those with terrain and source-type effects.
 
-## Main research themes
+That choice paid off quite early. One of the biggest problems turned out not to be machine-learning capacity at all; it was the spatial resolution of the teacher field.
+## The main things that changed the project
 
-### 1. Teacher data
+**Plume-relative geometry.** A flat homogeneous plume should rotate with the wind. I therefore moved away from absolute compass direction and toward downwind/crosswind coordinates.
 
-AERMOD is treated as a physics-response generator. Teacher runs preserve the link between environmental state, receptor geometry and the resulting hourly concentration.
+**Teacher resolution.** The early 10-degree angular receptor layout looked adequate until narrow stable plumes were examined closely. It was not. The grid could miss the plume core, which meant the surrogate was being asked to learn information that was not represented properly in the teacher sampling.
 
-### 2. Plume-relative geometry
+**Fresh-year diagnostics.** Later tests on 2024 and 2025 did not simply confirm the model. They exposed new weaknesses: first crosswind resolution, then longitudinal amplitude and dilution. Those years were subsequently treated as development evidence rather than reused as untouched validation.
 
-A homogeneous flat-terrain plume should rotate with the wind. The project therefore moved away from absolute compass direction and toward plume-relative downwind and crosswind coordinates.
+**A bounded residual layer.** After several successor ideas failed, the model that survived used a strongly constrained local residual correction on top of the main field prediction. That became the Phase2H prototype reported here.
 
-### 3. Spatial resolution
+## What the present evidence supports
 
-An important early result was that a coarse angular receptor grid could not resolve narrow stable plumes. This was a teacher-representation problem, not simply a machine-learning problem. The project moved to a denser Cartesian plume-relative representation as a result.
+The same frozen surrogate was evaluated on 2019 and 2018 after the prediction package and scoring rules had been fixed. Relative to the frozen baseline, whole-field normalised L1 improved by 23.77% in 2019 and 24.72% in 2018.
 
-### 4. Field structure
+That is useful evidence of temporal transfer inside the same broad site/climate domain. It is not yet evidence for a new climate, a new source family, complex terrain or building downwash.
 
-Instead of treating every receptor independently, the project explored a factorised view of the plume: the atmospheric state controls a compact field structure, while spatial geometry determines how that structure is sampled.
+The extreme tail is also still weak. The largest modelled peaks and their locations were not reproduced reliably in the two final year tests.
 
-### 5. Residual error
+## About the dates in this repository
 
-Later fresh-year tests showed that much of the remaining error came from longitudinal amplitude and dilution. The current prototype therefore uses a base field model with a bounded residual correction rather than relying on a single unconstrained learner.
-
-### 6. Fresh validation
-
-Years used to design the model are not reused as fresh evidence. The current frozen prototype was evaluated on 2019 and then 2018 only after the model and evaluation rules had been fixed.
-
-## What the project has shown so far
-
-The present evidence supports a narrow statement: within the same broad site and source domain, the frozen surrogate improved the full AERMOD concentration field by roughly 24% relative to its frozen baseline on two untouched meteorological years.
-
-The project has not shown that the model transfers to a different climate, different source family, complex terrain, building downwash or regulatory peak prediction.
+The research began in the private lab on 14 August 2026. This public repository was opened on 17 September 2026 after the first cycle had been frozen and documented. The public commit history therefore starts later than the research history. [`DEVELOPMENT_RECORD.md`](DEVELOPMENT_RECORD.md) gives the dated trail from the underlying project record.

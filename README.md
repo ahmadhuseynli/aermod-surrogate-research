@@ -2,83 +2,78 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22819727.svg)](https://doi.org/10.5281/zenodo.22819727)
 
-**Independent research project exploring whether a machine-learning surrogate can reproduce AERMOD-type hourly concentration fields inside a carefully limited domain.**
+This repository is the public record of an independent research project on fast AERMOD emulation.
 
-This project started with a simple question: if AERMOD is used as the reference model, can a separate surrogate learn enough of its hourly dispersion response to make fast predictions for cases it has not seen before?
+The research did not start when this public repository appeared. Work began in a private lab on **14 August 2026**. I kept the working project private while the model, validation rules and failure analysis were still changing, then opened this cleaned public archive after the first small research cycle had reached a sensible stopping point.
 
-The work is still a research prototype. It is **not** a regulatory replacement for AERMOD, and it is not presented as one.
+I have not backdated the GitHub history. The dated development record in this repository comes from contemporaneous private run logs, frozen artifacts and project notes.
 
-**Public project page:** https://ahmadhuseynli.github.io/aermod-surrogate-research/  
-**Technical note:** https://ahmadhuseynli.github.io/aermod-surrogate-research/assets/AERMOD_SURROGATE_TECHNICAL_NOTE_v0.1.pdf  
-**Latest archival release:** https://github.com/ahmadhuseynli/aermod-surrogate-research/releases/tag/v0.1.1  
-**Project DOI (all versions):** https://doi.org/10.5281/zenodo.22819727  
+## The question
+
+The question is simple to state: can a separate model learn enough of AERMOD's hourly dispersion response to reproduce a concentration field quickly for cases it has not already seen?
+
+For the first prototype I deliberately kept the physics narrow: one elevated point source, SO2, flat terrain, no downwash, no chemistry or deposition, and a controlled receptor layout. AERMOD remains the teacher, the verification reference and the regulatory model.
+
+This is not presented as a regulatory replacement for AERMOD.
+
+**Project page:** https://ahmadhuseynli.github.io/aermod-surrogate-research/<br>
+**Technical note:** https://ahmadhuseynli.github.io/aermod-surrogate-research/assets/AERMOD_SURROGATE_TECHNICAL_NOTE_v0.1.pdf<br>
+**Latest archival release:** https://github.com/ahmadhuseynli/aermod-surrogate-research/releases/tag/v0.1.1<br>
+**Project DOI:** https://doi.org/10.5281/zenodo.22819727<br>
 **Version DOI (v0.1.1):** https://doi.org/10.5281/zenodo.22819728
+## Current result
 
-## Where the project stands
+The same frozen Phase2H surrogate was tested on two meteorological years that had been kept out of model development until the scoring rules were fixed.
 
-The current frozen prototype has been tested on two meteorological years that were kept untouched until the model and evaluation rules were fixed.
-
-| Validation year | Baseline whole-field normalized L1 | Frozen surrogate | Relative improvement | Amplitude improvement |
+| Validation year | Baseline whole-field normalised L1 | Frozen surrogate | Relative improvement | Amplitude improvement |
 |---|---:|---:|---:|---:|
 | 2018 | 0.16904 | 0.12725 | 24.72% | 37.14% |
 | 2019 | 0.17218 | 0.13125 | 23.77% | 34.22% |
 
-The two years came from the same broad site climatology, but the hourly weather histories were materially different. The result therefore supports **same-domain temporal generalisation**, not a claim of generalisation to other climates, source types or terrain.
+The two years are from the same broad site climatology, but their hourly weather sequences are materially different. I therefore treat this as evidence of **same-domain temporal generalisation**. It is not evidence yet for transfer to a different climate, a different source family or complex terrain.
 
-The main unresolved problem is the extreme tail. The model improves the concentration field as a whole, but it does not yet reproduce the largest peak concentrations or their location reliably enough for regulatory use.
+The result is also not a claim that the model is “24% accurate”. Those percentages are reductions in one frozen whole-field error measure relative to an earlier baseline surrogate.
 
-## What is being modelled
+The biggest weakness is still the extreme tail. The model improves the field overall, but the largest peak concentration and its location are not yet reliable enough for high-consequence or regulatory use.
 
-The first prototype is intentionally narrow:
+## Why the history matters
 
-- one elevated point source;
-- SO2 as a passive pollutant for the prototype;
-- flat/rural terrain;
-- no building downwash;
-- no chemistry or deposition;
-- controlled receptor geometry;
-- hourly concentration field as the main target.
+This project did not progress as a sequence of better and better model scores. Several of the useful results were failures.
 
-AERMOD remains the teacher, verification reference and regulatory model.
+An early 10-degree receptor grid could not resolve narrow stable plumes. More trees did not fix that because the missing information was in the teacher representation, not in the learner. Later, a fresh 2024 test exposed another crosswind-resolution problem. A 2025 test then showed that the dominant remaining error had shifted toward longitudinal amplitude and dilution.
 
-## Why the project is useful
+Those failures changed what was built next. They are kept in the public history because they explain the present architecture better than a polished success-only account would.
+## A short dated trail
 
-The project is less about replacing a dispersion model and more about learning where a surrogate can and cannot reproduce one. That has required work on meteorological preprocessing, plume-relative geometry, spatial resolution, feature design, model training, residual error analysis, out-of-domain checks and strict validation without repeatedly tuning against the same test year.
+- **14 August 2026** — the project started in the private working lab with the narrow point-source/SO2 prototype and teacher-data definition.
+- **17 August 2026** — target-robustness work was completed for the first controlled surrogate experiments.
+- **20 August 2026** — the information-sufficiency campaign showed that part of the stable-plume problem came from spatial teacher resolution rather than simply missing atmospheric variables.
+- **12 September 2026** — the frozen model was taken into a one-shot 2019 temporal test. No 2019 truth-dependent retuning was allowed.
+- **14 September 2026** — the same frozen model was tested on 2018 as a second temporal confirmation.
+- **17 September 2026** — the first private research cycle was documented and a separate public archive was opened. Zenodo preservation followed after the GitHub release was frozen.
 
-A large part of the research has come from failed ideas. For example, an early angular receptor representation was too coarse for narrow stable plumes. Later, a fresh-year test showed that a crosswind spacing that looked acceptable during development was still too coarse. Those failures changed the design rather than being hidden.
+The public GitHub commit dates therefore describe **when the archive was published**, not when the underlying experiments were run.
 
-## Repository map
+## Where to look
 
-- [`PROJECT_OVERVIEW.md`](PROJECT_OVERVIEW.md) - the project in plain language.
-- [`METHODOLOGY.md`](METHODOLOGY.md) - how the teacher data, geometry and surrogate are handled.
-- [`RESULTS.md`](RESULTS.md) - the current validation evidence.
-- [`LIMITATIONS.md`](LIMITATIONS.md) - what the model cannot currently support.
-- [`RESEARCH_HISTORY.md`](RESEARCH_HISTORY.md) - the main scientific turns, including failures.
-- [`ROADMAP.md`](ROADMAP.md) - the next research questions.
-- [`data/`](data/) - small public summary tables only; no training data or model weights.
-- [`technical_report/`](technical_report/) - the public technical note in PDF and DOCX form.
-- [`docs/`](docs/) - the GitHub Pages website.
+- [`PROJECT_OVERVIEW.md`](PROJECT_OVERVIEW.md) — what the project is trying to do and why the first scope is small.
+- [`DEVELOPMENT_RECORD.md`](DEVELOPMENT_RECORD.md) — dated milestones reconstructed from the private laboratory record.
+- [`METHODOLOGY.md`](METHODOLOGY.md) — the public description of teacher data, geometry, target and validation discipline.
+- [`RESULTS.md`](RESULTS.md) — the reported frozen results, including the peak failures.
+- [`LIMITATIONS.md`](LIMITATIONS.md) — what the current evidence does not support.
+- [`RESEARCH_HISTORY.md`](RESEARCH_HISTORY.md) — the main turns in the work, including rejected approaches.
+- [`EVIDENCE_AND_PROVENANCE.md`](EVIDENCE_AND_PROVENANCE.md) — what is public, what remains private and how the dates are sourced.
+- [`technical_report/`](technical_report/) — the public technical note.
 
-## Reproducibility and evidence
+## Public/private split
 
-The private research lab keeps the full experiment history, frozen artifacts, checksums, run records and teacher outputs. This public repository exposes a readable summary and selected validation tables rather than the full internal pipeline.
+The private lab still holds the large teacher outputs, detailed run manifests, frozen model artifacts, checksums, operational history and implementation details. They are not all needed to make the public scientific claim understandable, and some are being kept private while longer-term IP and commercial decisions are still open.
 
-That split is intentional. It lets the scientific claims be described clearly while keeping large data, operational tooling and research implementation details out of the public release for now.
+The public material is intended to be enough for someone technical to see what was attempted, what was measured, what failed and exactly where the present evidence stops.
 
 ## Regulatory position
 
-This work is an independent research prototype. It is not affiliated with or endorsed by the U.S. Environmental Protection Agency. The surrogate is not an approved substitute for AERMOD. Formal regulatory modelling should continue to use the required approved model, inputs and procedures.
+This is an independent research project. It is not affiliated with or endorsed by the U.S. Environmental Protection Agency. Formal regulatory work should continue to use AERMOD and the required approved modelling procedures.
 
-## Current release
-
-**v0.1.1 - Zenodo archival release**
-
-This release preserves the same scientific/model state reported in v0.1.0. No model, validation result or reported conclusion changed. v0.1.1 adds citation and Zenodo metadata so the public research prototype has a permanent DOI.
-
-For a citation tied to this exact archived version, use **10.5281/zenodo.22819728**. For a citation that should always resolve to the latest archived version of the project, use **10.5281/zenodo.22819727**.
-
-## Reference model
-
-AERMOD documentation and current model releases are available from the U.S. EPA Support Center for Regulatory Atmospheric Modeling (SCRAM):
-
+AERMOD documentation and current releases are available through the U.S. EPA Support Center for Regulatory Atmospheric Modeling (SCRAM):
 https://www.epa.gov/scram/air-quality-dispersion-modeling-preferred-and-recommended-models

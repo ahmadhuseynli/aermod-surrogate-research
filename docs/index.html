@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Independent research project on machine-learning surrogates for AERMOD-type hourly atmospheric dispersion fields.">
+  <meta name="description" content="Independent research record on an AERMOD hourly-dispersion surrogate, including frozen validation results and known limits.">
   <title>Atmospheric Dispersion Surrogate Research</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,9 +13,9 @@
     <div class="brand">Atmospheric Dispersion Surrogate Research</div>
     <nav>
       <a href="#project">Project</a>
+      <a href="#record">Record</a>
       <a href="#results">Results</a>
       <a href="#limits">Limits</a>
-      <a href="#history">History</a>
       <a href="https://doi.org/10.5281/zenodo.22819727">DOI</a>
     </nav>
   </div>
@@ -24,87 +24,98 @@
 <main>
 <section class="hero">
   <div class="wrap">
-    <div class="eyebrow">Independent environmental modelling research</div>
-    <h1>Can a fast surrogate learn an AERMOD concentration field without pretending to replace AERMOD?</h1>
-    <p>This project uses AERMOD as a teacher and asks a narrower question: inside a clearly defined domain, can a separate model reproduce the hourly spatial response well enough to be useful for fast prediction and research?</p>
-    <div class="buttons">
+    <div class="eyebrow">Independent atmospheric-dispersion research</div>
+    <h1>A small, controlled test of whether AERMOD's hourly field can be learned by a separate surrogate.</h1>
+    <p>The work started in a private research workspace on 14 August 2026. This site was opened later, after the first development cycle and two one-shot year tests had been frozen. It is a public archive of that work, not the start of it.</p>    <div class="buttons">
       <a class="button" href="assets/AERMOD_SURROGATE_TECHNICAL_NOTE_v0.1.pdf">Read the technical note</a>
-      <a class="button secondary" href="https://github.com/ahmadhuseynli/aermod-surrogate-research">View the repository</a>
-      <a class="button secondary" href="https://doi.org/10.5281/zenodo.22819727">Zenodo DOI</a>
+      <a class="button secondary" href="https://github.com/ahmadhuseynli/aermod-surrogate-research">Repository</a>
+      <a class="button secondary" href="https://doi.org/10.5281/zenodo.22819727">Zenodo record</a>
     </div>
   </div>
 </section>
 
 <section id="project">
   <div class="wrap">
-    <h2>The project in one minute</h2>
-    <p class="lead">The first prototype is deliberately small: one elevated point source, SO2, flat terrain, no downwash, no chemistry or deposition, and an hourly concentration field as the target. That makes it possible to study the surrogate problem without mixing in every AERMOD capability at once.</p>
+    <h2>What the experiment covers</h2>
+    <p class="lead">The first prototype is deliberately narrow: one fixed elevated point source, SO2, flat terrain, no building downwash, no chemistry or deposition, and an hourly concentration field as the target.</p>
     <div class="flow">
-      <div>Source and meteorology</div>
+      <div>Source + meteorology</div>
       <div>Plume-relative geometry</div>
       <div>Frozen surrogate</div>
-      <div>Hourly concentration field</div>
+      <div>Hourly field</div>
     </div>
-    <div class="note"><strong>AERMOD remains the reference.</strong> The surrogate is an independent research prototype, not a regulatory substitute.</div>
+    <p>I kept the first case small because I wanted to know where the errors were actually coming from. That turned out to matter: one of the biggest early failures was a coarse teacher grid, not simply an underpowered learner.</p>
+    <div class="note"><strong>AERMOD remains the reference.</strong> The surrogate is a research prototype and is not an approved regulatory substitute.</div>
+  </div>
+</section>
+
+<section id="record">
+  <div class="wrap">
+    <h2>The public repository is new. The research is older.</h2>
+    <p class="lead">The working project began on 14 August 2026 in a private lab. I did not backdate GitHub commits. The dates below come from the private run history, frozen handoffs and contemporaneous project notes.</p>    <div class="grid">
+      <div class="card"><h3>14 Aug</h3><p>Private project started with the fixed point-source/SO2 prototype and hourly-field target.</p></div>
+      <div class="card"><h3>20 Aug</h3><p>Information-sufficiency work showed that stable-plume error was partly a spatial teacher-resolution problem.</p></div>
+      <div class="card"><h3>12 Sep</h3><p>The frozen Phase2H model entered a one-shot 2019 temporal confirmation.</p></div>
+      <div class="card"><h3>14 Sep</h3><p>The same frozen model was tested on 2018 without retraining.</p></div>
+    </div>
+    <p style="margin-top:24px">The public GitHub archive was opened on 17 September, after those tests and the first research cycle had been documented. A fuller dated trail is in <a href="https://github.com/ahmadhuseynli/aermod-surrogate-research/blob/main/DEVELOPMENT_RECORD.md">DEVELOPMENT_RECORD.md</a>.</p>
   </div>
 </section>
 
 <section id="results">
   <div class="wrap">
-    <h2>Current validation result</h2>
-    <p class="lead">The model and evaluation rules were fixed before the 2019 and 2018 teacher concentration fields were opened. Both tests used the same frozen surrogate.</p>
+    <h2>Frozen temporal validation</h2>
+    <p class="lead">The model and scoring rules were fixed before the 2019 and 2018 AERMOD concentration truth was opened. Both years used the same Phase2H surrogate.</p>
     <div class="grid">
-      <div class="card"><div class="metric">24.72%</div><div class="label">2018 whole-field error reduction vs frozen baseline</div></div>
-      <div class="card"><div class="metric">23.77%</div><div class="label">2019 whole-field error reduction vs frozen baseline</div></div>
-      <div class="card"><div class="metric">34-37%</div><div class="label">amplitude-error reduction across the two untouched years</div></div>
+      <div class="card"><div class="metric">24.72%</div><div class="label">2018 whole-field L1 reduction vs the frozen baseline</div></div>
+      <div class="card"><div class="metric">23.77%</div><div class="label">2019 whole-field L1 reduction vs the frozen baseline</div></div>
+      <div class="card"><div class="metric">34–37%</div><div class="label">amplitude-error reduction across the two confirmation years</div></div>
     </div>
-    <h3 style="margin-top:32px">Frozen temporal validation</h3>
     <table>
-      <thead><tr><th>Year</th><th>Baseline field L1</th><th>Frozen surrogate</th><th>Relative improvement</th></tr></thead>
+      <thead><tr><th>Year</th><th>Baseline field L1</th><th>Phase2H</th><th>Relative improvement</th></tr></thead>
       <tbody>
         <tr><td>2018</td><td>0.16904</td><td>0.12725</td><td>24.72%</td></tr>
         <tr><td>2019</td><td>0.17218</td><td>0.13125</td><td>23.77%</td></tr>
       </tbody>
-    </table>
-    <p>The years were not copies of the same hourly weather. Same-calendar wind-speed correlation was 0.043 and the median absolute wind-direction difference was 75 degrees. The claim is therefore same-domain temporal generalisation, not transfer to a different climate or site.</p>
+    </table>    <p>The two years were not copies of the same weather sequence. Same-calendar wind-speed correlation was 0.043, the median absolute wind-direction difference was 75 degrees, and no comparable calendar hour had an identical full dynamic state. I therefore describe the result as same-domain temporal generalisation, not cross-climate transfer.</p>
   </div>
 </section>
 
 <section id="limits">
   <div class="wrap two">
     <div>
-      <h2>What is working</h2>
-      <p>The surrogate repeatedly improves the full concentration field and the longitudinal amplitude response on unseen years within the restricted domain.</p>
-      <p>Plume-relative geometry, denser spatial sampling and strict separation between development years and fresh validation years have all been important.</p>
+      <h2>What held up</h2>
+      <p>The frozen surrogate improved the field as a whole in both untouched years, and the longitudinal amplitude correction behaved consistently with the error mechanism identified during development.</p>
+      <p>The result also survived materially different hourly meteorology inside the same broad climatology.</p>
     </div>
     <div>
-      <h2>What is not solved</h2>
-      <p>Extreme peak magnitude and peak location are still unreliable. The model has not been validated for other sites, source families, complex terrain, building downwash, multiple sources or chemistry.</p>
-      <p>Those limits are part of the result, not footnotes.</p>
+      <h2>What did not</h2>
+      <p>The extreme tail is still weak. In both final year tests, the global maximum was too high and occurred at a different case/receptor from the AERMOD maximum.</p>
+      <p>That is why I do not claim reliable controlling-receptor or regulatory-peak prediction.</p>
     </div>
   </div>
 </section>
 
 <section id="history">
   <div class="wrap">
-    <h2>Why the failures matter</h2>
-    <p class="lead">The project changed direction several times because the evidence said it should.</p>
+    <h2>The failures shaped the model</h2>
+    <p class="lead">The main design changes came after specific tests failed, not from swapping algorithms until a score looked good.</p>
     <div class="grid">
-      <div class="card"><h3>Coarse grid</h3><p>An early 10-degree angular teacher grid missed narrow stable plumes. More ML capacity could not recover spatial information that was never sampled properly.</p></div>
-      <div class="card"><h3>Fresh-year failure</h3><p>A 2024 test showed that a development crosswind spacing was still too coarse. That year was then treated as spent evidence rather than reused as a fresh confirmation.</p></div>
-      <div class="card"><h3>Amplitude error</h3><p>A 2025 test showed that the dominant remaining problem was longitudinal amplitude and dilution, which led to the current residual-correction design.</p></div>
+      <div class="card"><h3>Coarse angular grid</h3><p>A 10-degree teacher grid missed narrow stable plume cores. Increasing model capacity could not recover spatial information that had never been sampled properly.</p></div>
+      <div class="card"><h3>Fresh 2024 check</h3><p>Another crosswind-resolution problem appeared. The geometry was refined, and 2024 was then treated as spent development evidence.</p></div>
+      <div class="card"><h3>Fresh 2025 check</h3><p>The main remaining error had shifted toward longitudinal amplitude and dilution, which led to the residual-amplitude layer.</p></div>
     </div>
   </div>
 </section>
-
 <section>
   <div class="wrap">
     <h2>Archived and citable</h2>
-    <p class="lead">The public project is preserved on Zenodo. The DOI for this exact archived release is <strong>10.5281/zenodo.22819728</strong>. The project DOI <strong>10.5281/zenodo.22819727</strong> represents all versions and always resolves to the latest archived version.</p>
+    <p class="lead">The public research archive is preserved on Zenodo. The project DOI points to the latest archived version; the version DOI identifies this exact v0.1.1 snapshot.</p>
+    <p><strong>Project DOI:</strong> 10.5281/zenodo.22819727<br><strong>Version DOI:</strong> 10.5281/zenodo.22819728</p>
     <div class="buttons">
       <a class="button" href="https://doi.org/10.5281/zenodo.22819727">Open Zenodo record</a>
       <a class="button secondary" href="assets/AERMOD_SURROGATE_TECHNICAL_NOTE_v0.1.pdf">Technical note (PDF)</a>
-      <a class="button secondary" href="https://www.epa.gov/scram/air-quality-dispersion-modeling-preferred-and-recommended-models">U.S. EPA AERMOD documentation</a>
+      <a class="button secondary" href="https://www.epa.gov/scram/air-quality-dispersion-modeling-preferred-and-recommended-models">EPA AERMOD documentation</a>
     </div>
   </div>
 </section>

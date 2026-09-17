@@ -1,41 +1,38 @@
 # Research roadmap
 
-The current prototype is paused at a natural boundary. The next work should expand the science, not just add another small model tweak.
+The current prototype is at a point where another small tuning cycle on the same setup would not tell me much. The next work should test a new scientific boundary.
 
-## Near term
+## 1. Fix the tail before widening the claims
 
-### 1. Peak and tail behaviour
+The biggest unresolved issue is the extreme concentration tail. The next step is to understand why the controlling maxima remain unstable without tuning directly to known validation peaks.
 
-Understand why the highest concentrations are still poorly reproduced. The goal is not to force the current model to match a few known maxima, but to identify a representation or modelling approach that transfers to unseen extremes.
+A useful improvement here would have to transfer to unseen extremes, not just reduce error on the cases already inspected.
 
-### 2. New independent site or climate
+## 2. Move outside the current climatology
 
-The 2018 and 2019 tests show temporal transfer inside the same broad climatology. A different site would test a much stronger form of generalisation.
+The 2018 and 2019 results show temporal transfer inside one broad local climate. A new site or genuinely different meteorological regime would be a much stronger test.
 
-### 3. Variable source physics
+That experiment should be preregistered and kept untouched until the next model is frozen.
 
-Move from one fixed stack to a bounded range of release height, diameter, exit velocity and temperature. This is necessary before the surrogate can be described as a source-general engine.
+## 3. Let the source physics vary
 
-## Later
+The current source is fixed. A broader engine needs a controlled range of release height, diameter, exit velocity and temperature.
 
-- complex terrain;
-- building downwash;
-- multiple point sources;
-- other source types;
-- additional pollutants where the AERMOD treatment is appropriate;
-- adaptive AERMOD simulation design focused on weak or uncertain regions;
-- stronger uncertainty and out-of-domain calibration.
+I would rather add those variables deliberately and validate them one at a time than jump immediately to a very wide source space and lose track of where errors come from.
 
-## Long-term architecture
+## Later extensions
 
-The intended end state is a governed simulation factory:
+Only after the three items above are stable would I move into more complicated AERMOD behaviour: terrain, building downwash, multiple sources, other source types, and additional pollutants where the AERMOD treatment is appropriate.
+## Longer-term direction
+
+The longer-term idea is a governed simulation loop rather than one permanently fixed training set:
 
 1. generate physically valid scenarios;
 2. run AERMOD as the reference model;
-3. preserve inputs, outputs and provenance;
-4. train a surrogate on hourly fields;
-5. identify high-error or poorly supported regions;
-6. generate targeted new teacher cases;
-7. repeat until the validated domain is broad enough for the intended use.
+3. preserve the physical inputs, outputs and provenance;
+4. train the surrogate on hourly fields;
+5. identify poorly supported or high-error parts of the state space;
+6. run targeted new AERMOD cases there;
+7. retrain and repeat.
 
-AERMOD would remain the fallback and regulatory engine even if the surrogate becomes accurate enough for routine operational prediction.
+AERMOD would still remain the verification and regulatory engine. The point of the surrogate is fast prediction inside a domain that has actually been demonstrated, not removing the reference model from the workflow.

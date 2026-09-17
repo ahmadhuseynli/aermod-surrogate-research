@@ -1,50 +1,46 @@
-# Limitations and boundaries
+# Limitations
 
-This page is intentionally direct. The project is more useful when the limits are clear.
+This page is here because the boundaries matter as much as the headline result.
 
-## Validated scope
+## What the current evidence actually covers
 
-The current evidence applies to a restricted prototype with:
+The reported prototype is limited to:
 
 - one fixed elevated point source;
-- SO2 treated as a passive pollutant;
+- SO2 treated as a passive pollutant for this experiment;
 - flat/rural terrain;
 - no building downwash;
 - no chemistry or deposition;
 - one broad site climatology;
 - controlled plume-relative receptor geometry.
 
-## Not yet demonstrated
+That is the domain in which the current evidence should be read.
 
-The project has not yet demonstrated reliable transfer to:
+## What has not been demonstrated
 
-- a different climate or site;
-- variable stack/source physics across a broad range;
-- complex terrain;
-- building downwash;
-- multiple interacting sources;
-- other source types;
-- reactive chemistry or deposition;
-- operational regulatory peak prediction.
+I have not yet shown that the surrogate transfers reliably to a different site or climate, a broad range of stack conditions, complex terrain, building downwash, multiple interacting sources, other source types, or reactive/deposition cases.
 
-## Extreme values
+Those are future experiments, not implied capabilities of the current model.
 
-The largest remaining concern is the extreme tail. Whole-field error improves, but the highest modelled concentrations can still be overpredicted and displaced spatially.
+## The peak problem
 
-That is not a minor presentation issue. A surrogate intended for regulatory or high-consequence use must get the controlling tail behaviour right, or fall back to AERMOD when it cannot.
+The largest remaining technical concern is the extreme tail. Whole-field error improves, but the highest concentration can still be substantially wrong and can occur at the wrong receptor.
 
-## Out-of-domain classes
+For an operational or regulatory application that is a serious limitation. If the controlling tail cannot be trusted, AERMOD still has to be used for the decision.
+## Applicability is not a guarantee
 
-The project has a support-distance based applicability system. It is useful for describing whether a query resembles the development set, but it is not an error guarantee. Some difficult cases remain inside apparently well-supported regions.
+The project includes a support-distance measure that checks whether a query resembles the development data. It is useful, but it is not a promise of small error. Some difficult cases remain in parts of the input space that look well supported.
 
-## What the reported percentages mean
+I therefore treat applicability as one layer of evidence rather than an automatic pass/fail accuracy certificate.
 
-The quoted 23.77% and 24.72% values are relative reductions in the project's whole-field normalised L1 metric against a frozen internal baseline surrogate. They are not statements that the model is “24% accurate” and they are not comparisons against measured ambient concentrations.
+## About the reported percentages
 
-## Regulatory use
+The 23.77% and 24.72% numbers are relative reductions in whole-field normalised L1 compared with a frozen internal baseline surrogate. They do not mean “23.77% accurate” or “24.72% accurate”.
 
-The surrogate is not an approved replacement for AERMOD. The U.S. EPA model and required regulatory modelling procedures remain the reference for formal applications.
+They also do not compare the surrogate with measured ambient concentrations. AERMOD is the teacher in this experiment.
 
-## Independence
+## Regulatory position
 
-This is an independent research project. It is not affiliated with, sponsored by or endorsed by the U.S. EPA.
+The surrogate is not an approved replacement for AERMOD. Formal regulatory work should continue to use the required approved model, inputs and procedures.
+
+This is an independent research project and is not affiliated with, sponsored by or endorsed by the U.S. EPA.
