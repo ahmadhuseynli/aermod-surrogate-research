@@ -3,8 +3,9 @@ message: "If you refer to this research project, please cite the repository rele
 title: "Atmospheric Dispersion Surrogate Research: AERMOD Emulator Prototype"
 type: software
 authors:
-  - alias: "ahmadhuseynli"
-version: 0.1.0
+  - given-names: "Ahmad"
+    family-names: "Huseynli"
+version: 0.1.1
 date-released: 2026-09-17
 repository-code: "https://github.com/ahmadhuseynli/aermod-surrogate-research"
 url: "https://ahmadhuseynli.github.io/aermod-surrogate-research/"
