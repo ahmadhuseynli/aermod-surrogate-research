@@ -1,0 +1,23 @@
+# Local/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Private or large research assets
+private/
+models/
+weights/
+teacher_outputs/
+raw_data/
+*.parquet
+*.npy
+*.npz
+*.pkl
+*.joblib
