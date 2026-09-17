@@ -1,0 +1,4 @@
+record_id,wind_speed_m_s,wind_direction_deg,ambient_temperature_K,friction_velocity_m_s,mixing_height_m,downwind_distance_m,crosswind_distance_m,source_height_m,emission_rate_g_s
+synthetic_001,5.2,240,298.0,0.35,800,1000,0,50,1.0
+synthetic_002,3.8,185,295.5,0.22,450,2500,125,50,1.0
+synthetic_003,7.1,315,301.2,0.48,1200,5000,-250,50,1.0
