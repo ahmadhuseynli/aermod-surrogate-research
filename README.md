@@ -10,9 +10,7 @@ The longer-term direction is a governed system in which AERMOD generates trusted
 
 **Project page:** https://ahmadhuseynli.github.io/aermod-surrogate-research/  
 **Technical note:** https://ahmadhuseynli.github.io/aermod-surrogate-research/assets/AERMOD_SURROGATE_TECHNICAL_NOTE_v0.1.pdf  
-**Latest archival release:** https://github.com/ahmadhuseynli/aermod-surrogate-research/releases/tag/v0.1.1  
 **Project DOI:** https://doi.org/10.5281/zenodo.22819727  
-**Version DOI (v0.1.1):** https://doi.org/10.5281/zenodo.22819728
 
 ## The first prototype
 
