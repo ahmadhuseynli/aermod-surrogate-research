@@ -1,52 +1,69 @@
 # Development record
 
-This page exists because the public GitHub repository is newer than the research itself.
+This is a compact account of how the project changed as the evidence changed. It is organised by scientific stage rather than by calendar date.
 
-The working project began on **14 August 2026** in a private research workspace. The public repository was created only after the first development cycle had been frozen and written up. I have not changed or backdated Git commit dates to make the public repository look older.
+The full working record is much larger and remains in the private research lab.
 
-The dates below are taken from contemporaneous project chats, run logs, frozen handoff packages and the private operation history. They are a short public reconstruction, not a replacement for the full laboratory archive.
+## Initial controlled surrogate
 
-## 14–17 August 2026 — first controlled surrogate
+The first question was intentionally narrow: one elevated point source, SO2, flat terrain and a fixed source configuration.
 
-The first question was intentionally narrow: one elevated point source, SO2, flat terrain and a fixed source configuration. The first teacher dataset and boosted-tree surrogate were built around hourly C/Q rather than annual summary statistics.
+The first teacher dataset and boosted-tree surrogate were built around hourly C/Q rather than annual summary statistics. Early work compared raw C/Q with a transformed target and tested whether simply increasing model capacity would close the error.
 
-Early work compared raw C/Q with a transformed target and tested whether simply increasing model capacity would close the error. It did not. Longer boosting runs improved the fit but reached diminishing returns.
+It did not. Longer boosting runs improved the fit but reached diminishing returns. The problem moved from "more trees" toward representation and information content.
 
-By 17 August the target-robustness work had been completed and the problem had shifted from “more trees” toward representation and information content.
-
-## 18–20 August 2026 — representation and information limits
+## Representation and information limits
 
 Rotation and mirror tests were used to check whether the model had learned avoidable compass-direction artefacts. The work moved toward plume-relative geometry.
 
-A more important result followed: the 10-degree angular teacher grid was too coarse for some narrow stable plumes. A model cannot recover a peak that the teacher sampling never resolves properly.
+A more important result followed: the angular teacher grid was too coarse for some narrow stable plumes. A model cannot recover a plume core that the teacher sampling never resolves properly.
 
-The information-sufficiency campaign completed on 20 August. Its strongest conclusion was not that more meteorological variables were obviously missing; it was that spatial teacher resolution had become a real limiting factor in the stable regime. That changed the next phase of the project.
-## September 2026 — fresh-year tests and the residual architecture
+Additional meteorological fields did not remove that problem. The stronger interpretation was that spatial teacher resolution itself had become a limiting factor in the stable regime.
 
-The next phase used fresh meteorological years as diagnostic exams. Once a year was opened and used to change the design, it was no longer treated as independent evidence.
+That changed the direction of the project.
 
-A 2024 test exposed another crosswind-resolution weakness in narrow stable plumes. A 2025 test then showed that much of the remaining error had moved into longitudinal amplitude and dilution. Those two years became development evidence.
+## Rebuilding the spatial representation
 
-An untouched 2022 architecture exam supported the residual-amplitude direction, but its absolute error was still too large. Several more complicated residual models were then tried and rejected. The surviving version used a strongly bounded local residual correction and became the frozen Phase2H prototype.
+Crosswind and downwind reconstruction were then tested separately.
 
-## 12 September 2026 — 2019 one-shot temporal confirmation
+Crosswind interpolation improved first. Longitudinal support remained weak. A two-dimensional near-source composition experiment also failed.
 
-The student-side prediction package was sealed before the 2019 AERMOD concentration truth was opened. No retraining, architecture change or truth-dependent applicability-threshold tuning was allowed afterward for the reported result.
+The response was targeted spatial densification and better plume-relative geometry, not a larger learner.
 
-Whole-field normalised L1 fell from 0.1721767 for the frozen baseline to 0.1312534 for Phase2H, a 23.77% relative reduction. Amplitude error fell by 34.22%.
+## Fresh-year diagnostics
 
-The global peak was still wrong in both magnitude and location. That failure was kept as part of the result rather than hidden behind the field-average improvement.
+Fresh meteorological years were used as diagnostic exams. Once a year was opened and used to change the model, it was no longer treated as independent validation.
 
-## 14 September 2026 — second confirmation on 2018
+A 2024 test exposed another crosswind-resolution weakness in narrow stable plumes. A 2025 test then showed that much of the remaining error had moved into longitudinal amplitude and dilution.
 
-The same frozen surrogate was taken into 2018 without retraining. Whole-field normalised L1 fell from 0.1690417 to 0.1272474, a 24.72% relative reduction, while amplitude error fell by 37.14%.
+Those tests became development evidence and led to an amplitude-residual design.
 
-A separate weather-state comparison later showed that 2018 and 2019 were not simply copies of the same hourly sequence: same-calendar wind-speed correlation was 0.043, the median absolute wind-direction difference was 75 degrees, and no comparable calendar hour had an identical full dynamic state.
+## Residual architecture
 
-The correct interpretation remains narrow: repeatable temporal improvement inside the same broad climatological domain.
+An untouched 2022 architecture exam supported the residual-amplitude direction but still showed too much absolute error.
 
-## 17 September 2026 — public archive
+Several more complicated residual models were then tested and rejected. Regime-specific experts, low-dimensional residual predictors and direct lateral corrections did not survive the frozen development gates.
 
-After the first research cycle was documented, a separate public repository was created from the private record. The public archive contains the scientific question, selected validation tables, failure history, limitations and a technical note. The production research workspace remains private.
+The version that remained used a strongly bounded local residual correction and became the frozen Phase2H prototype.
 
-The GitHub repository creation date is therefore a publication date, not a project-start date. Zenodo preservation was added after the public release so that the archive could be cited permanently.
+## Frozen temporal confirmation
+
+The prediction package and scoring rules were fixed before the final year-level concentration truth was opened.
+
+On 2019, whole-field normalised L1 fell from 0.1721767 for the frozen baseline to 0.1312534 for Phase2H, a 23.77% relative reduction. Amplitude error fell by 34.22%.
+
+The same frozen surrogate was then taken into 2018 without retraining. Whole-field normalised L1 fell from 0.1690417 to 0.1272474, a 24.72% relative reduction, while amplitude error fell by 37.14%.
+
+For readability, those final whole-field errors correspond to about **86.9% and 87.3% agreement when expressed as 1 - normalised L1**. That shorthand is tied to this internal metric; it is not a universal accuracy score.
+
+A separate weather-state comparison showed that the two years were not simply copies of the same hourly sequence. Same-calendar wind-speed correlation was 0.043, the median absolute wind-direction difference was 75 degrees, and no comparable calendar hour had an identical full dynamic state.
+
+The global peak remained wrong in both magnitude and location. That failure is kept as part of the result rather than hidden behind the field-average improvement.
+
+## Public research record
+
+The public repository contains the scientific question, selected validation tables, failure history, limitations, roadmap and a technical note.
+
+The large teacher library, trained weights, exact residual library, detailed controller code and complete operational record remain private.
+
+The public record is intended to make the work understandable and auditable without exposing the entire working lab or closing off later IP and commercial decisions.
