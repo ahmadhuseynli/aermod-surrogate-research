@@ -5,9 +5,9 @@ type: software
 authors:
   - given-names: "Ahmad"
     family-names: "Huseynli"
-version: 0.1.2
-date-released: 2026-09-18
-doi: "10.5281/zenodo.22819727"
+version: 0.1.1
+date-released: 2026-09-17
+doi: "10.5281/zenodo.22819728"
 repository-code: "https://github.com/ahmadhuseynli/aermod-surrogate-research"
 url: "https://ahmadhuseynli.github.io/aermod-surrogate-research/"
 abstract: >-

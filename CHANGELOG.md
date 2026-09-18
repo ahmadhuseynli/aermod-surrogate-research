@@ -1,11 +1,5 @@
 # Changelog
 
-## v0.1.2
-
-Editorial refresh of the public research record.
-
-The scientific model and validation results are unchanged. The public narrative was reorganised around the research question, scientific development, practical value, limitations and future direction rather than a date-by-date diary. The validation summary now also gives an intuitive reading of the final normalised-L1 values as roughly 87% whole-field agreement, with the metric boundary stated explicitly.
-
 ## v0.1.1
 
 Archival update linking the public repository to Zenodo.

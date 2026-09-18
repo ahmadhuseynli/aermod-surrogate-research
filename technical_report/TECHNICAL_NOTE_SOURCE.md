@@ -2,7 +2,7 @@
 
 ## Public technical note
 
-**Current public archive:** v0.1.2 / Zenodo project DOI 10.5281/zenodo.22819727
+**Current public archive:** v0.1.1 / Zenodo project DOI 10.5281/zenodo.22819727
 
 This note summarises the first mature research cycle of an independent AERMOD-surrogate project.
 
