@@ -1,12 +1,12 @@
 # Evidence and provenance
 
-## Why this public repository is newer than the work
+## Public record and private lab
 
-The working project began on **14 August 2026** in a private research workspace. The public GitHub repository was opened on **17 September 2026**, after the first development cycle had been frozen and documented.
+The public repository is a cleaned research record. The working project itself was developed in a private laboratory that contains much more material than is useful or appropriate to publish directly.
 
-That separation was intentional. During development, the private lab was changing frequently and contained large teacher outputs, controller files, local run paths and model artifacts that did not belong in a public repository.
+That private environment changes frequently and includes large teacher outputs, controller files, local run paths, model artifacts and detailed operational logs. The public repository keeps the scientific question, validation logic, reported results and limitations readable without mirroring the entire lab.
 
-I have not backdated the public Git history. The older dates shown in [`DEVELOPMENT_RECORD.md`](DEVELOPMENT_RECORD.md) come from contemporaneous private project records.
+GitHub commit history therefore records changes to the public archive. It should not be read as a complete chronology of every underlying experiment.
 
 ## What exists in the private evidence chain
 
@@ -20,7 +20,6 @@ The private archive retains, among other things:
 - failed experiments and recovery records;
 - trained model artifacts and implementation code.
 
-The public repository is a readable research record, not a mirror of that full laboratory workspace.
 ## Validation roles
 
 | Year | Role when first opened | What happened afterward |
@@ -37,10 +36,12 @@ An opened year is not later presented as fresh validation for a revised model.
 
 The 2018 and 2019 results use the same Phase2H surrogate. No validation-year retraining, architecture change or post-hoc support-threshold tuning is included in those reported numbers.
 
-The public repository reports the scientific state that existed at the end of the first private research cycle. The Zenodo archival release adds preservation and citation metadata; it does not change the scientific model or the reported validation results.
+Whole-field normalised L1 was 0.1272474 and 0.1312534, which can also be read as roughly 87.3% and 86.9% whole-field agreement when expressed as 1 - normalised L1.
+
+That is an intuitive restatement of the internal metric, not a claim of universal model accuracy and not a comparison with measured ambient air concentrations.
 
 ## What is intentionally not public
 
 The full teacher library, trained weights, exact production residual library, internal controller, local machine paths and detailed orchestration are not part of this release.
 
-That is partly practical and partly deliberate. The public record is meant to expose enough evidence to understand the work without publishing every implementation detail before the longer-term IP and commercial direction is decided.
+That is partly practical and partly deliberate. The public record is meant to expose enough evidence to understand the work while keeping the complete research machinery and future IP/commercial options separate.
