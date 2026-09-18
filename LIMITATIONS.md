@@ -27,6 +27,7 @@ Those are future experiments, not implied capabilities of the current model.
 The largest remaining technical concern is the extreme tail. Whole-field error improves, but the highest concentration can still be substantially wrong and can occur at the wrong receptor.
 
 For an operational or regulatory application that is a serious limitation. If the controlling tail cannot be trusted, AERMOD still has to be used for the decision.
+
 ## Applicability is not a guarantee
 
 The project includes a support-distance measure that checks whether a query resembles the development data. It is useful, but it is not a promise of small error. Some difficult cases remain in parts of the input space that look well supported.
@@ -35,9 +36,13 @@ I therefore treat applicability as one layer of evidence rather than an automati
 
 ## About the reported percentages
 
-The 23.77% and 24.72% numbers are relative reductions in whole-field normalised L1 compared with a frozen internal baseline surrogate. They do not mean “23.77% accurate” or “24.72% accurate”.
+There are two different percentages in the public summary.
 
-They also do not compare the surrogate with measured ambient concentrations. AERMOD is the teacher in this experiment.
+The approximately **87% whole-field agreement** is simply **1 - the final normalised-L1 error** in the two untouched year-level tests. It is an intuitive restatement of that internal field metric.
+
+The **23.77% and 24.72%** figures are the relative reductions in that error compared with the earlier frozen baseline surrogate.
+
+Neither is a universal "model accuracy" claim. They do not measure agreement with real ambient monitoring data, and strong field-average performance does not remove the known peak problem.
 
 ## Regulatory position
 
