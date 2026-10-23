@@ -1,51 +1,17 @@
-# Limitations
+# What the evidence supports, and what it does not
 
-This page is here because the boundaries matter as much as the headline result.
+23 October 2026
 
-## What the current evidence actually covers
+The status of this project is now closed as a practical no-go for the proposed generic AERMOD surrogate product. This is a narrower, better supported conclusion than saying that artificial intelligence can never approximate an atmospheric dispersion model. It also makes a stronger statement than the earlier public limitations, which described a promising prototype with more work to do. Later work was performed, and it did not close the gap to a complete engineering tool.
 
-The reported prototype is limited to:
+The early Phase2H result concerned one elevated point source, passive sulfur dioxide, flat terrain, controlled receptors and one broad climatological setting. It was compared with AERMOD, not with ambient monitoring observations. Its normalized whole-field L1 improvement and the shorthand of approximately 87% agreement describe a specific internal metric, not the probability that any prediction was correct. Serious maximum-concentration and peak-location errors remained in both frozen year-level tests.
 
-- one fixed elevated point source;
-- SO2 treated as a passive pollutant for this experiment;
-- flat/rural terrain;
-- no building downwash;
-- no chemistry or deposition;
-- one broad site climatology;
-- controlled plume-relative receptor geometry.
+Gen2 extended the research domain but closed with bounded applicability. The later Gen3 effort did not prove successful complete-case replacement. E04 was not completed. E04S was an applicability feasibility study rather than an independent concentration-accuracy examination. E04A closed before AERMOD truth opening because daily routing left the workload predominantly with the reference model. These negative results constrain product usefulness without proving that every excluded concentration prediction would have been wrong.
 
-That is the domain in which the current evidence should be read.
+V8–V16 experiments used different populations and, at times, different targets. Their reported statistics cannot be placed on one common axis and described as monotonic improvement or deterioration. Truth-assisted amplitude and plume-shape reconstructions are not predictive deployment results. The selected 64 hours in the V16 2025 transfer test had already been used as development evidence and cannot be counted as fresh annual confirmation. The very poor transfer scores are a substantive warning about the tested formulation, but they are not estimates of failure frequency across every hour of 2025.
 
-## What has not been demonstrated
+The October height-ablation experiment showed that one feature direction was untrained and had a material computational effect. The ablated calculation still failed four of ten frozen gate families. It was not promoted to a new frozen product model, did not establish physical invariance to measurement height, and did not explain earlier failures in other model families. Nor did the fixed-stack V16 model implement source-height, diameter, velocity and temperature variation as deployable input variables. The final evidence-eligibility audit did not certify an untouched independent confirmation pool for a narrower successor, or a completed end-to-end speed comparison against an equivalent optimized AERMOD calculation.
 
-I have not yet shown that the surrogate transfers reliably to a different site or climate, a broad range of stack conditions, complex terrain, building downwash, multiple interacting sources, other source types, or reactive/deposition cases.
+The scientific record also contains incomplete historical execution provenance, several spent datasets, a geometry mismatch between the original fixed-stack teacher and later model receptor support, and an unresolved cumulative resource allocation. Those gaps were not turned into retrospective passes. The conclusion is that continuation under the same formulation would require unearned scientific and commercial assumptions.
 
-Those are future experiments, not implied capabilities of the current model.
-
-## The peak problem
-
-The largest remaining technical concern is the extreme tail. Whole-field error improves, but the highest concentration can still be substantially wrong and can occur at the wrong receptor.
-
-For an operational or regulatory application that is a serious limitation. If the controlling tail cannot be trusted, AERMOD still has to be used for the decision.
-
-## Applicability is not a guarantee
-
-The project includes a support-distance measure that checks whether a query resembles the development data. It is useful, but it is not a promise of small error. Some difficult cases remain in parts of the input space that look well supported.
-
-I therefore treat applicability as one layer of evidence rather than an automatic pass/fail accuracy certificate.
-
-## About the reported percentages
-
-There are two different percentages in the public summary.
-
-The approximately **87% whole-field agreement** is simply **1 - the final normalised-L1 error** in the two untouched year-level tests. It is an intuitive restatement of that internal field metric.
-
-The **23.77% and 24.72%** figures are the relative reductions in that error compared with the earlier frozen baseline surrogate.
-
-Neither is a universal "model accuracy" claim. They do not measure agreement with real ambient monitoring data, and strong field-average performance does not remove the known peak problem.
-
-## Regulatory position
-
-The surrogate is not an approved replacement for AERMOD. Formal regulatory work should continue to use the required approved model, inputs and procedures.
-
-This is an independent research project and is not affiliated with, sponsored by or endorsed by the U.S. EPA.
+The public research [closure account](RESEARCH_CLOSURE_2026-10-23.md) explains why development is being stopped and what observations remain useful. Frozen Gen1 and Gen2 assets and the detailed governed laboratory record are preserved separately. No claim of regulatory equivalence or approval is made.
