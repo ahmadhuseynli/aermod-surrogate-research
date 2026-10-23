@@ -22,6 +22,8 @@ The private archive retains, among other things:
 - failed experiments and recovery records;
 - trained model artifacts and implementation code.
 
+The frozen Gen1 baseline explicitly distinguishes 2018 spent confirmatory evidence from recovered 2019 spent year-validation evidence. In particular, 2019 is not a pristine one-shot confirmatory pass. Historical text below describes the role originally assigned to a year but should not override that later recovered provenance classification. The 2019 scores remain in the record without being elevated to untouched confirmation. The source is governance/GEN1_PHASE2H_IMMUTABLE_BASELINE.json in the governed private laboratory.
+
 ## Validation roles
 
 | Year | Role when first opened | What happened afterward |
@@ -29,7 +31,7 @@ The private archive retains, among other things:
 | 2024 | fresh representation test | crosswind-resolution failure diagnosed; year became development evidence |
 | 2025 | fresh error-mechanism test | amplitude/dilution weakness diagnosed; year became development evidence |
 | 2022 | untouched architecture exam | architecture direction supported; year became development evidence |
-| 2019 | one-shot temporal confirmation | frozen model scored; year then became spent evidence |
+| 2019 | recovered spent year validation (not pristine one-shot confirmation) | frozen model scored; year then became spent evidence |
 | 2018 | second one-shot temporal confirmation | same frozen model scored; year then became spent evidence |
 
 An opened year is not later presented as fresh validation for a revised model.
