@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Nine evidence-checked cases of closest AERMOD reproduction, distinguishing trained predictive surrogates from AERMOD-truth-assisted plume reconstructions.">
+<title>Where the Surrogate Came Closest to AERMOD — Research Chapters</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.chapter-content {max-width:870px;margin:auto}
+.chapter-content h1{font-size:clamp(2rem,4vw,3.25rem);line-height:1.2;padding-top:20px;}
+.chapter-content h2{font-size:clamp(1.45rem,2.6vw,2rem);line-height:1.3;margin-top:62px;border-top:1px solid var(--line);padding-top:28px}
+.chapter-content p{font-size:1.08rem;line-height:1.88;margin:18px 0}
+.chapter-content .equation {overflow-x:auto;max-width:100%;padding:13px 5px;margin:22px 0;background:rgba(255,255,255,.85);border-radius:8px;text-align:center}
+.jump {border:1px solid var(--line);background:white;border-radius:10px;padding:18px;margin:14px 0}
+</style>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['$$','$$']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head><body>
+<header><div class="wrap row"><div class="brand">Atmospheric Dispersion Surrogate Research</div><nav><a href="index.html">Research closure</a><a href="#top">Closest matches</a><a href="https://github.com/ahmadhuseynli/aermod-surrogate-research/blob/main/CLOSEST_AERMOD_MIMIC_CASES_2026-10-23.md">Source text</a></nav></div></header>
+<main id="top"><section><div class="wrap"><article class="chapter-content"><h1>The occasions when the surrogate came closest to AERMOD</h1>
+<p>A retrospective scientific account, 23 October 2026</p>
+<p>The final no-go decision does not mean that every surrogate prediction was poor. Some experiments reproduced the spatial form of an AERMOD plume remarkably well. Some gave fairly small concentration-field errors on genuinely reserved tests. Others came much closer numerically, but only after the reconstruction was supplied with a quantity derived from the AERMOD answer itself. Those results must not be put on one leaderboard. The most accurate reconstruction is not necessarily the best predictive surrogate, and the smallest reported metric is not necessarily the strongest evidence.</p>
+<p>I went back through the frozen Gen1 manifest and its year-level evidence, the Gen2 source-coverage, large sealed-validation, multi-point and volume-source reports, the Gen2 Stage24C closure, the Gen3 V9–V16 results and preregistrations, and the October 2026 mechanism and evidence-eligibility reviews. This account identifies the strongest defensible examples in the reviewed lineage. It is a retrospective selection made after results were known, not a preregistered cross-experiment model contest. It cannot certify that no single hour or receptor elsewhere in the private archive had an even smaller numerical error. A nearly exact isolated receptor would not, in any event, establish a useful hourly field surrogate.</p>
+<h2>How I distinguish a close match from an accurate model</h2>
+<p>The basic object is the hourly concentration field. Let \(C^A_{h,r}\) be the AERMOD concentration at meteorological hour \(h\) and receptor \(r\), and let \(\widehat C_{h,r}\) be the surrogate result at the same hour and receptor. For the passive, linear-in-emission exercises in this record, the teacher and student were often represented as \(C/Q\), where \(Q\) is a source emission rate. This convention is useful only when the underlying AERMOD options actually obey the assumed scaling. The first task was to learn the concentration response with weather, source and receptor coordinates held in the exact roles specified by each experiment.</p>
+<p>For the later field-relative L1 comparisons, the useful mathematical description of a single-hour field error is</p>
+<div class="equation">$$
+E_h=\frac{\sum_r|\widehat C_{h,r}-C^A_{h,r}|}
+{\sum_r |C^A_{h,r}|},
+$$</div>
+<p>with any experiment-specific numerical floor or selection policy retained where the truth field is near zero. A pooled or concentration-weighted field-relative error is not the same number as the median of the hourly \(E_h\). Likewise, a median over selected relevant hours is not an all-year statistic. When I quote an archive label such as “overall field relative L1,” I retain that archive's aggregation and do not retrospectively replace it with the metric from another campaign.</p>
+<p>Field shape can be examined separately using the cosine similarity</p>
+<div class="equation">$$
+S_h=\frac{\widehat{\boldsymbol C}_h\cdot \boldsymbol C^A_h}
+{\|\widehat{\boldsymbol C}_h\|_2\|\boldsymbol C^A_h\|_2}.
+$$</div>
+<p>A value near one means the predicted and reference fields point in approximately the same direction as vectors of receptor concentrations. It does not establish correct magnitude. If \(\widehat{\boldsymbol C}=k\boldsymbol C^A\) for a positive but incorrect multiplier \(k\), the cosine is exactly one despite the amplitude error. This is why I distinguish shape, field mass, peak magnitude, peak location, weather-regime behaviour and the portion of the candidate workload that the model may legitimately accept.</p>
+<p>For the Gen2 Point18 large sealed test, the actual source code specifies a different, stabilized per-hour error:</p>
+<div class="equation">$$
+E_h^{\mathrm{stab}}=
+\frac{\sum_r|\widehat C_{h,r}-C^A_{h,r}|}
+{\sum_r C^A_{h,r}+s_F},
+\qquad s_F=1.8060223929000871.
+$$</div>
+<p>The frozen \(s_F\) came from previously spent development evidence, before that confirmation truth was opened. A reported stabilized error of 0.0647 is therefore not an ordinary unregularized six-percent relative error. The corresponding stabilized peak denominator was \(C^A_{\max,h}+0.2682063579559326\). These details matter when deciding which experiment was actually closest.</p>
+<h2>Chapter 1. Phase2H: the strongest early frozen-year point-source result</h2>
+<p>The first convincing year-scale mimic used one stationary elevated POINT source in flat rural conditions, with passive SO2, no building downwash, no chemical transformation, no deposition and no other sources. Its frozen canonical stack had height 50 m above ground, diameter 2 m, exit velocity 15 m/s and exit temperature 400 K. The canonical emission rate was 1 g/s, with a 10 g/s linearity-control case. The fixed source base elevation was 790 m above mean sea level. Receptors formed the frozen 19,497-point plume-relative Cartesian field, with 97 downwind positions from 100 to 20,000 m and 201 crosswind positions from −10,000 to +10,000 m. The receptor index ran in x-major, y-minor order.</p>
+<p>The field learner was a 9,999-tree LightGBM model with 29 frozen meteorological and receptor-derived features. Its transformed target was</p>
+<div class="equation">$$
+z_{h,r}=\log\left(1+\frac{(C/Q)_{h,r}}{s}\right),
+\qquad s=0.00014965549297792183,
+$$</div>
+<p>so the inverse transformation was \(C/Q=s(\exp z-1)\). The later Phase2H stage did not replace the base field shape. It changed the longitudinal amplitude through a 600-round stage-one correction and a nearest-neighbour cross-fitted residual. In log-amplitude notation the frozen correction can be represented schematically as</p>
+<div class="equation">$$
+\widehat C_h(x,y)=\widehat C_{\mathrm{base},h}(x,y)
+\exp\!\left[\Delta_{\mathrm{stage1},h}(x)
++0.3017783063\,e_{\mathrm{1NN},h}(x)\right].
+$$</div>
+<p>The residual neighbour was selected at the same downwind x-index using standardized meteorological and amplitude-related variables. It came from a 24,053-row development library drawn from previously spent 2022, 2024 and 2025 material. The equation describes the documented multiplicative correction structure; it is not a substitute for the frozen feature order, preprocessing and inference code.</p>
+<p>On the 2018 evaluation, there were 8,620 usable meteorological hours. The normalized whole-field L1 was 0.1272474, compared with 0.1690417 for the earlier frozen model, a relative error reduction of 24.72%. On the recovered 2019 year, comprising 8,531 usable hours, the same reported metric was 0.1312534 compared with 0.1721767, a reduction of 23.77%. The recorded amplitude-error improvement was 37.14% for 2018 and 34.22% for 2019. The historical phrase “about 87% whole-field agreement” was only the transformation \(1-E\) of that specific field metric. It should not be read as regulatory accuracy, probability of correctness or agreement with observations of the real atmosphere.</p>
+<p>The most important limitation was visible in the maxima. In 2018 the reference maximum was approximately 3.02 in the project's C/Q reporting scale, while the surrogate produced approximately 7.11 at a different hour/receptor. In 2019 the comparable maxima were approximately 3.10 and 6.61, again at different locations. The model learned much of the common field geometry without learning the extremes well enough for controlling-concentration decisions.</p>
+<p>The evidence labels also require correction to an overly simple earlier public narrative. The frozen Gen1 baseline explicitly classifies the 2018 result as spent confirmatory evidence but the 2019 result as recovered, spent year-validation evidence, not a pristine one-shot confirmation. I preserve both reported scores but do not describe both as untouched confirmatory trials. The operative source is governance/GEN1_PHASE2H_IMMUTABLE_BASELINE.json, especially its fixed_source, receptor_geometry, phase2h_correction and spent_evidence sections. Neither the model nor these historical labels has been changed.</p>
+<h2>Chapter 2. Point18: very close fields inside a small high-confidence class</h2>
+<p>Gen2's Point18 large sealed validation asked a different question: not whether a model was equally accurate everywhere, but whether a frozen applicability rule could separate cases where the model was more trustworthy from cases where it was not. Thirty-two sealed source–meteorology scenarios were generated using independent Network B receptors. Each scenario covered 96 hours, and Network B contained 360 receptors. The final evaluation selected 2,691 prediction-relevant hours according to frozen rules. The AL2_R2 champion and the pre-truth Point17 confidence definitions were not retrained or adjusted after opening the AERMOD concentrations.</p>
+<p>The high-confidence class contained 130 relevant hours, all recorded as stable. Its median stabilized field L1 was 0.0646679, and its observed severe-error rate was zero out of those 130 hours. The moderate class contained 435 hours with median stabilized L1 0.0791062; the marginal class contained 756 hours at 0.1434834; and 1,370 out-of-domain hours had median stabilized L1 0.2707290. Out-of-domain cases accounted for approximately 86.77% of the observed severe errors. That ordering was a meaningful outcome of the frozen risk partition.</p>
+<p>Across the broader 1,321-hour supported population, rather than only the 130 high-confidence hours, median stabilized field L1 was 0.1091231, median shape cosine was 0.9807854, median stabilized peak error was 0.1018154, and median stabilized absolute log-amplitude ratio was 0.0723518. These are among the best responsibly reported shape-and-amplitude results in the sealed Gen2 record. The field-shape cosine should still be read alongside the amplitude and peak statistics, not in place of them.</p>
+<p>The mathematical mechanism was applicability-conditioned inference, not a newly fitted atmospheric law. The frozen learner provided a field \(\widehat{\boldsymbol C}_h\), while the frozen support and risk function \(g(\boldsymbol s_h,\boldsymbol m_h,\boldsymbol r)\) assigned one of four classes. The validation then tested whether</p>
+<div class="equation">$$
+\operatorname{median}\!\left(E_h^{\mathrm{stab}}\mid g=\mathrm{HIGH}\right)
+<
+\operatorname{median}\!\left(E_h^{\mathrm{stab}}\mid g=\mathrm{MODERATE}\right)
+<
+\operatorname{median}\!\left(E_h^{\mathrm{stab}}\mid g=\mathrm{MARGINAL}\right)
+<
+\operatorname{median}\!\left(E_h^{\mathrm{stab}}\mid g=\mathrm{OOD}\right).
+$$</div>
+<p>It did, using the actual frozen definitions. The strongest result was restricted to a small and exclusively stable class. No severe errors among 130 observed cases is not proof of a zero future error rate. It also does not mean that the full 2,691-hour test was within a six-percent error band. The authoritative reports are campaigns/GEN2_V1_LARGE_SEALED_VALIDATION_V1/confirmation_validation_report.json, confirmation_preregistration.json and the frozen common metric routine.</p>
+<h2>Chapter 3. Gen2-A targeted expansion: the closest held-out variable-stack configurations</h2>
+<p>The original fixed stack was not sufficient for the generic source-physics objective. Gen2-A therefore varied stack height from 30 to 100 m, diameter from 1 to 3.5 m, exit speed from 7 to 25 m/s and exit temperature from 330 to 550 K, with a normalized emission rate of 1 g/s. These are four physical input dimensions, not merely different labels for the same source. Exit area and volume flow were derived as</p>
+<div class="equation">$$
+A_e=\frac{\pi D^2}{4},
+\qquad \dot V_e=A_e v_e,
+$$</div>
+<p>while the effective plume rise in AERMOD also depends on buoyancy, momentum and the meteorological profile. The trained challenger retained the same LightGBM family and 38-feature input contract, allowing the test to focus on the value of adding carefully targeted source coverage rather than changing both model and training population.</p>
+<p>The targeted experiment added 16 development source configurations to 24 earlier ones. A separate set of four new source configurations was reserved as sealed holdout, each tested over 96 meteorological hours, yielding 384 holdout hour–source cases. The model trained on 40 source configurations, labelled M3, had median field-relative L1 0.2060724 across the holdout, compared with 0.3100982 for the 24-source M2. Median shape cosine for M3 was 0.9885409, and its median peak-location error in the evaluated receptor network was zero. Its median relative peak-magnitude error was still 0.2088386, and the field-error 95th percentile was 0.4944968. The strong shape agreement did not eliminate considerable amplitude and tail error.</p>
+<p>Two actual reserved source configurations were especially close. GEN2A2_SRC_21 had stack height 31.0955 m, diameter 2.24278 m, exit speed 12.50084 m/s and temperature 549.3623 K. Over its 96 holdout hours, M3 median field-relative L1 was 0.1629214, median shape cosine was 0.9890201 and median peak-relative error was 0.1566789. GEN2A2_SRC_22 had height 42.9179 m, diameter 3.08987 m, velocity 18.90244 m/s and temperature 464.5932 K. It returned median field-relative L1 0.170544, shape cosine 0.99279 and median peak-relative error 0.14119. Those configurations illustrate how convincingly plume shape could be captured within a physically constrained and targeted training population.</p>
+<p>The targeted addition was not an unqualified improvement everywhere. On GEN2A2_SRC_20, the earlier 24-source model had median field-relative L1 0.1483393 and the expanded model worsened it to 0.2033560. Other source settings improved enough for the preregistered overall evidence classification to be strongly supportive of targeted coverage. This is an instructive example of the difference between expanding information and assuming every new data point benefits every region of the input space.</p>
+<p>The selection of SRC_21 and SRC_22 in this chapter is a retrospective illustration of two particularly good holdout configurations, not an additional independent test or proof that those sources define a universally safe operating box. The governing records are campaigns/GEN2_A_SOURCE_PHYSICS_COVERAGE_EXPANSION_V1/source_state.json, preregistration.json, validation_report.json and scientific_decision.json.</p>
+<h2>Chapter 4. Point23A: exact teacher superposition and a bounded multi-point surrogate</h2>
+<p>The multi-point experiment was scientifically interesting because part of its mathematics is exact under the selected passive linear AERMOD configuration. For simultaneous independent POINT sources with emission rates \(Q_i\), the total source-contributed field is</p>
+<div class="equation">$$
+C^A_{\mathrm{total}}(h,r)=\sum_{i=1}^{N}
+Q_i\left(\frac{C^A}{Q}\right)_i(h,r).
+$$</div>
+<p>The surrogate used the same composition structure,</p>
+<div class="equation">$$
+\widehat C_{\mathrm{total}}(h,r)=\sum_{i=1}^{N}
+Q_i\left(\widehat{\frac{C}{Q}}\right)_i(h,r),
+$$</div>
+<p>with each constituent subjected to its original applicability contract. The exact algebraic composition is not a claim that the constituent single-source predictions were exact. Indeed, the residual obeys</p>
+<div class="equation">$$
+\widehat C_{\mathrm{total}}-C^A_{\mathrm{total}}
+=\sum_i(\widehat C_i-C^A_i),
+$$</div>
+<p>and the triangle inequality bounds the aggregate absolute error by the sum of component errors. This decomposition is valuable because it separates a possible multi-source interaction defect from an inherited single-source prediction defect.</p>
+<p>The independent confirmation used 16 source ensembles containing two to five elevated points, varied relative source positions, emission-rate contrasts and separate meteorological blocks. It respected flat rural conditions without downwash, chemistry or deposition. The teacher additivity check had a reported normalized relative L1 of zero, and the computed surrogate composition identity also matched to numerical precision. Across 1,356 relevant multi-source hours, the surrogate's median field L1 was 0.3741018, median shape cosine was 0.9336639 and median relative peak error was 0.2115461. Its median peak-location displacement was approximately 314 m. This confirmed bounded composition under the frozen gates; it did not make the single-source approximation error disappear.</p>
+<p>One of the closest individual independent scenarios was P23A_E03_S03_N2_R6_C3. It used two stacks separated by 1,600 m and rotated to a layout bearing of 73 degrees. The first stack was at approximately (−233.897, −765.044) m, with height 46.7795 m, diameter 1.8221 m, exit velocity 18.3487 m/s, temperature 526.864 K and emission rate 6 g/s. The second was at (233.897, 765.044) m, with height 58.2716 m, diameter 2.8120 m, exit velocity 15.5655 m/s, temperature 395.953 K and emission rate 1 g/s. Meteorological conditions came from 30 January through 2 February 2023, and the scenario used 718 receptors. There were 66 relevant hours under the frozen selection. The median field L1 was 0.2889665, the median shape cosine was 0.9770439 and the median peak-relative error was 0.1795751. This was a fairly close field-shape reconstruction for a two-source plume with substantial overlap, but not a near-exact amplitude forecast.</p>
+<p>This scenario is included because it was among the most accurate after examining the confirmation report, not because it was prospectively elected a champion. All other source ensembles, including weaker stable and overlap cases, remain part of the reported outcome. The evidence is campaigns/GEN2_P23A_MULTI_SOURCE_INDEPENDENT_CONFIRMATION_V1/scenario_manifest_frozen.json, source_manifest_frozen.json, validation_report.json, acceptance_contract_frozen.json and scientific_decision.json.</p>
+<h2>Chapter 5. Point23B: close plume shape for a restricted VOLUME source</h2>
+<p>A separate family tested AERMOD's standard non-aircraft VOLUME source representation. Instead of specifying a stack exit velocity, diameter and temperature, this source type was defined through release height \(H_v\), initial lateral spread \(\sigma_{y0}\), initial vertical spread \(\sigma_{z0}\) and emission rate \(Q\). In physical terms the source representation introduces a finite initial plume size before atmospheric spreading develops. A simplified Gaussian form would use effective spreads related to</p>
+<div class="equation">$$
+\sigma_y^2(x)\simeq \sigma_{y,\mathrm{atm}}^2(x)+\sigma_{y0}^2,
+\qquad
+\sigma_z^2(x)\simeq \sigma_{z,\mathrm{atm}}^2(x)+\sigma_{z0}^2,
+$$</div>
+<p>although this expression is a description of the source-spread concept, not a claim that the frozen AERMOD implementation always uses this exact formula for every stability or boundary case.</p>
+<p>The independent VOLUME confirmation tested 12 frozen source–meteorology scenarios, including eight core scenarios and additional diagnostic edges. Within the 353 prediction-relevant core hours, median field L1 was 0.2769942, median shape cosine was 0.9847820 and median peak-relative error was 0.2798920. A particularly strong mixed-regime subset of 161 hours had median field L1 0.2050156, median cosine 0.9887027 and median peak-relative error 0.1862586. These numbers supported a bounded VOLUME capability, not wholesale extension to all elevated volume releases.</p>
+<p>Scenario P23B_E03_C01 was a close individual example. It placed a passive VOLUME source at (0,0), with release height 87.8027 m, \(\sigma_{y0}=16.6987\) m, \(\sigma_{z0}=3.90016\) m and emission rate 1 g/s, without the aircraft special option. The meteorological window was 6–9 March 2023, containing 96 hours and a mixture of stable and convective states. Among its 88 relevant hours, the core median field L1 was 0.2223693 and median cosine was 0.9856031. Within its narrower 38-hour supported subset, median field L1 improved to 0.1582727 and median cosine to 0.9912078. That is exceptionally close plume *shape* for a restricted source–weather population, but the supported-subset selection must be disclosed and cannot be generalized to the other 58 hours or to all VOLUME cases.</p>
+<p>The stable and sparsely supported edge conditions remained limited or routed back to AERMOD. The core result should not be represented as approval of all volume geometries, urban effects or all receptor distances. The evidence comes from campaigns/GEN2_P23B_VOLUME_INDEPENDENT_CONFIRMATION_V1/acceptance_contract_frozen.json, scenario_manifest_frozen.json, source_manifest_frozen.json, validation_report.json and scientific_decision.json.</p>
+<h2>Chapter 6. V16: a trained model that was unusually close on one year's blocked test</h2>
+<p>The terminal Gen3 V16 experiment is worth including because it produced one of the strongest in-population scores for a genuinely trained direct field predictor, even though the same experiment ultimately closed the formulation. It used the fixed elevated stack of 50 m height, 2 m diameter, 15 m/s exit speed, 400 K temperature and passive C/Q field on the 19,497-receptor grid. Its input was a 40-feature meteorology, physics-proxy and crosswind-coordinate representation, expanded to 80 neural inputs after missingness indicators. Its network was a 64–64–32 hidden-unit multilayer perceptron with SiLU activations and a Softplus nonnegative output.</p>
+<p>There were 6,358 training hours from already-spent 2019 truth. Ninety-six receptors were sampled per training hour, giving 610,368 sampled training rows. Sampling deliberately included ordinary rows and concentration-ranked rows from the training truth. The transformed target was \(z=\log(1+C/c_0)\), with \(c_0\) determined only from the positive training concentrations. The preregistered 30-epoch loss combined weighted SmoothL1 in transformed space and weighted absolute concentration error normalized by the training hour's peak. In condensed mathematical notation,</p>
+<div class="equation">$$
+\mathcal L =
+0.70\,\mathbb E[w\,\operatorname{SmoothL1}_{0.1}(\widehat z-z)]
++
+0.30\,\mathbb E\!\left[
+w\,\frac{|\widehat C-C|}{C_{\max,h}}
+\right],
+\quad
+w=1+4\sqrt{C/C_{\max,h}}.
+$$</div>
+<p>The expression captures the documented loss components; exact zero-handling and minibatch implementation remain governed by the frozen script.</p>
+<p>On the blocked 256-hour 2019 holdout, the model returned overall relative field L1 0.1266805, stable field L1 0.0593288 over 135 stable hours, convective field L1 0.1439137 over 121 convective hours and low-wind field L1 0.2462769 across 64 low-wind hours. Its median absolute peak-relative error was 0.0348078 and median peak-location displacement was about 28.9 m. All ten frozen gate families passed. If this had been the only reported test, the model could have looked very promising.</p>
+<p>It was not the only reported test. On 64 selected 2025 transfer hours that had already become spent development evidence, overall field L1 rose to 0.5257018, low-wind L1 to 3.2280910 and aggregate bias to plus 50.65%. Only two of ten gates passed. The in-population score was a genuine observation, not proof of wider transfer. The 2019 holdout was blocked within an already-used development year and was not a fresh independent meteorological-year confirmation.</p>
+<p>The later height-input ablation reduced the same 2025 field L1 to 0.243881 without retraining, by disabling an unlearned 10 m-versus-7.9 m feature direction. That is a useful computational mechanism diagnostic, but it still passed only six of ten gates and was never promoted into a new product model. The source is campaigns/GEN3_USABLE_POINT_SURROGATE_EXISTENCE_V16/phase1_v16_preregistration.json and phase1_v16_result.json, with the subsequent October height diagnostic preserved separately. The unusually good 2019 score is inseparable from the subsequent failure.</p>
+<h2>Chapter 7. V10: a strong reconstruction that was given the correct amplitude</h2>
+<p>This chapter begins the distinctly different category of truth-informed reconstruction ceilings. The V10 experiment did not predict the full field from meteorology alone. For each crosswind slice at downwind distance \(x\), it supplied the true AERMOD-integrated amplitude \(A_h(x)\). Starting from a frozen predicted lateral shape \(S_0\), it allowed a width dilation \(w\) and a meander fraction \(M\). The reconstruction was</p>
+<div class="equation">$$
+\widetilde C_h(x,y)=A_h^A(x)
+\left[(1-M_h(x))S_{w,h}(x,y)+M_h(x)U(y)\right],
+$$</div>
+<p>where \(U(y)\) was a finite-support uniform density and \(S_w(y)\) was a dilated and renormalized version of the frozen base crosswind profile. The permitted width multipliers ran from 0.25 to 4 on a fixed grid, and \(M\) took values from zero to one in steps of 0.05. The fitting minimized L1 against already-spent 2025 AERMOD slices after the true amplitude had been supplied. Thus the result measures whether the selected shapes could *represent* the answer, not whether an unseen atmospheric state could *predict* it.</p>
+<p>Across the 64 selected 2025 hours, the frozen M58 base field had relative L1 approximately 0.3694977. Replacing only its slice amplitudes with truth-derived values reduced that to 0.1458244. Adding optimized width reduced it further to 0.0768506, and adding the meander mixture reduced it to 0.0674303. The last reconstruction also had median peak-relative error around 0.10686. The shape-representation ceiling passed its preregistered tests.</p>
+<p>The predictive V10 learner then had to infer amplitude, width and meander from available inputs under blocked validation. It failed the important convective, low-wind and amplitude-tail gates. This is one of the clearest demonstrations that representing a plume given some of the answer is a different problem from emulating AERMOD on a new case. The source is campaigns/GEN3_USABLE_POINT_SURROGATE_EXISTENCE_V10/phase1_v10_preregistration.json, phase1_v10_e00_shape_representation_ceiling.json and phase1_v10_e01_blocked_cv_result.json.</p>
+<h2>Chapter 8. V11: the smallest field error, and a misleading plume maximum</h2>
+<p>V11 removed the frozen M58 lateral shape entirely. It represented each crosswind slice by a nonnegative centered Gaussian mixed with a uniform meander component, again with the AERMOD crosswind amplitude supplied from the answer. The shape was</p>
+<div class="equation">$$
+\widetilde C_h(x,y)=A_h^A(x)
+\left[(1-M_h(x))G_{\sigma_h(x)}(y)+M_h(x)U(y)\right].
+$$</div>
+<p>The Gaussian \(G_\sigma\) and uniform \(U\) were normalized on the exact finite crosswind grid using trapezoidal integration weights. A fixed grid of widths between 6.25 and 10,764 m was examined. For each width, the mixture weight \(M\) was selected by the weighted-median solution minimizing absolute reconstruction error, with deterministic tie-breaking. This was a truth-informed per-slice fit, not a trained forecast of \(A,\sigma,M\).</p>
+<p>The result was striking if only whole-field error was considered. Across the spent 64-hour 2025 experiment, relative field L1 was 0.0252384. Stable field L1 was 0.0180009, convective field L1 was 0.0311829 and low-wind field L1 was 0.0271080. This is the lowest aggregate field-relative L1 among the reviewed V9–V12 oracle records. But median relative peak error was 0.3190651, and the 90th-percentile peak error was 0.8879990. The model could reduce total absolute discrepancy by broadening or flattening concentration while misrepresenting the peak that would often matter most for dispersion decisions.</p>
+<p>The V11 representation therefore failed the frozen peak gates and closed as a negative experiment. This is precisely why the expression “closest to AERMOD” is ambiguous without specifying the metric. On one field-integral criterion the reconstruction was exceptionally close. On a controlling-maximum criterion it was demonstrably not. The evidence is campaigns/GEN3_USABLE_POINT_SURROGATE_EXISTENCE_V11/phase1_v11_preregistration.json and phase1_v11_e00_parametric_shape_ceiling.json.</p>
+<h2>Chapter 9. V12: the closest balanced truth-assisted field and peak reconstruction</h2>
+<p>V12 addressed the V11 peak failure by making both the crosswind mass and the peak explicit. For each hour and downwind slice it used the true AERMOD integral</p>
+<div class="equation">$$
+A_h^A(x)=\int C_h^A(x,y)\,dy
+$$</div>
+<p>and the true AERMOD peak</p>
+<div class="equation">$$
+P_h^A(x)=\max_y C_h^A(x,y),
+\qquad
+H_h^A(x)=P_h^A(x)/A_h^A(x).
+$$</div>
+<p>It then reconstructed</p>
+<div class="equation">$$
+\widetilde C_h(x,y)=A_h^A(x)
+\left[(1-M_h(x))G_{\sigma_h(x)}(y)+M_h(x)U(y)\right].
+$$</div>
+<p>The preregistered E00 variant searched a fixed width grid and analytically chose the feasible meander weight to match \(H=P/A\), retaining mass by normalization and enforcing nonnegative \(0\leq M\leq1\). Among the feasible solutions it chose the smallest field L1, with deterministic tie-breaking. On the 64 previously spent 2025 cases, this achieved relative field L1 0.0664450. The recorded median peak-relative error was zero and its 90th percentile was numerically at machine precision. The peak equality was expected because the true peak had been supplied as a constraint; it was not an independent peak prediction.</p>
+<p>The later post-failure two-factor diagnostic produced an even more interesting balanced field result without fitting a separate width grid to each slice. It used the teacher-derived ratio \(H=P/A\) to calculate a Gaussian effective width,</p>
+<div class="equation">$$
+\sigma_{\mathrm{eff}}(x)=\frac{1}{\sqrt{2\pi}\,H_h^A(x)},
+$$</div>
+<p>subject to the defined width bounds and finite-support normalization. A remaining analytic meander choice matched the peak-to-mass ratio as closely as the representation allowed. Overall relative field L1 was 0.0334770, with stable field L1 0.0165755, convective field L1 0.0473592 and low-wind field L1 0.0503629. Median relative peak error was 0.0036223 and its 90th percentile was 0.0043413. These are unusually close field and peak scores together. About 74.03% of the recorded meander choices were clipped, however, indicating that many solutions pressed against a representation bound.</p>
+<p>This is arguably the most visually and numerically faithful *conditional reconstruction* found in the reviewed V9–V12 family, if both field and peak matter. It is not a deployable surrogate. Both \(A\) and \(P\) were derived from the actual AERMOD field. The subsequent predictive learning challenge for these factors did not achieve an acceptable transferable model. Using the exact AERMOD-derived \(A\) and \(P\) to reconstruct an AERMOD plume is a useful test of mathematical representability, but it does not show that meteorology and source physics provide enough information for the factors to be predicted. The governing sources are campaigns/GEN3_USABLE_POINT_SURROGATE_EXISTENCE_V12/phase1_v12_preregistration.json, phase1_v12_e00_amplitude_peak_shape_ceiling.json, phase1_v12_postfailure_two_factor_diagnostic.json and the V12 closure.</p>
+<h2>A numerical precision result that should not be called AERMOD mimicry</h2>
+<p>One additional frozen result is almost machine-precision exact and would be easy to misreport. The Gen1 ONNX Runtime conversion of the frozen boosted-tree predictor was checked against the original model's own output. The maximum tested relative L1 difference between the two inference implementations was approximately \(4.83\times10^{-14}\), with equal peak indices. That established computational equivalence between two ways of executing the *same surrogate*. It did not establish agreement between either surrogate and AERMOD. The relevant frozen record is governance/GEN1_PHASE2H_IMMUTABLE_BASELINE.json under accelerated_inference.</p>
+<p>Likewise, Point23A's exactly zero teacher-superposition residual was a check of linear AERMOD source additivity, not a zero-error result for the learned constituent surrogate. Source composition identities and teacher identities may be numerically exact while the learned concentration field retains significant error.</p>
+<h2>What these close matches mean for the final decision</h2>
+<p>The most persuasive trained year-scale result remains the bounded Phase2H comparison, with the caveat that 2018 and 2019 have different provenance labels. Point18 produced impressively close supported and high-confidence cases, but the very best class was small and entirely stable. The Gen2-A experiment demonstrated genuine benefit from targeted variation in four stack parameters, including individual held-out sources with cosine similarities around 0.99 and median field L1 near 0.16–0.17. The multi-POINT and VOLUME branches confirmed limited physically interpretable extensions under frozen independent tests, while retaining material error and strict fallback boundaries. V16 demonstrated that a neural field could look strong on an internal blocked year test and still fail severely when the meteorological information domain changed.</p>
+<p>The lowest numerical errors came from V11 and V12 because important latent quantities were taken from AERMOD truth. V11 exposed how small L1 and wrong peaks can coexist. V12 exposed how close the shape can become when both mass and peak are already known. Neither proves predictive learnability. The October height diagnostic subsequently showed that a concrete implementation problem accounted for part of V16's transfer failure; it did not cure the other gates or create variable-stack inputs.</p>
+<p>There is no scientifically honest single “best-ever surrogate accuracy” percentage across these experiments. The populations, targets, receptor supports, near-zero stabilizers, selected-hour rules, truth-access roles and physical input dimensions differ. Calling the truth-conditioned V12 result a 96.65% accurate AI emulator, or interpreting a 0.99 cosine as 99% concentration accuracy, would turn a useful scientific discovery into a false product claim. Calling the entire project useless would be equally careless.</p>
+<p>The practical no-go remains unchanged. This chapter preserves the cases where the method came closest, describes why they were close, and identifies exactly what was still missing before any of them could become the fast and trustworthy general AERMOD surrogate originally sought. It is a retrospective addition to <a href="RESEARCH_CLOSURE_2026-10-23.md">the October 2026 project closure</a>, not a reopening of frozen research or authorization to retest spent truth.</p></article></div></section></main>
+<footer><div class="wrap">Retrospective research account | 23 October 2026 | This chapter does not reverse the project's practical no-go decision.</div></footer>
+</body></html>
