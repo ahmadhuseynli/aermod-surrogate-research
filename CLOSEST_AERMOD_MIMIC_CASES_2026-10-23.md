@@ -1,6 +1,6 @@
 # The occasions when the surrogate came closest to AERMOD
 
-A retrospective scientific account, 23 October 2026
+A retrospective scientific account, 23 October 2026. Archived as [Zenodo version 0.3.0](https://doi.org/10.5281/zenodo.23604369).
 
 The final no-go decision does not mean that every surrogate prediction was poor. Some experiments reproduced the spatial form of an AERMOD plume remarkably well. Some gave fairly small concentration-field errors on genuinely reserved tests. Others came much closer numerically, but only after the reconstruction was supplied with a quantity derived from the AERMOD answer itself. Those results must not be put on one leaderboard. The most accurate reconstruction is not necessarily the best predictive surrogate, and the smallest reported metric is not necessarily the strongest evidence.
 
