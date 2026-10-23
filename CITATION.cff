@@ -1,13 +1,13 @@
 cff-version: 1.2.0
 message: "For the final research assessment, cite the project archive and the October 2026 closure."
-title: "Atmospheric Dispersion Surrogate Research: Final Research Closure and No-Go Assessment"
+title: "Atmospheric Dispersion Surrogate Research: Closure and Closest-Match Scientific Chapters"
 type: software
 authors:
   - given-names: "Ahmad"
     family-names: "Huseynli"
-version: 0.2.0
+version: 0.3.0
 date-released: 2026-10-23
-doi: "10.5281/zenodo.23604102"
+doi: "10.5281/zenodo.22819727"
 repository-code: "https://github.com/ahmadhuseynli/aermod-surrogate-research"
 url: "https://ahmadhuseynli.github.io/aermod-surrogate-research/"
 abstract: >-
