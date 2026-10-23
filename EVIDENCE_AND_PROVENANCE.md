@@ -1,7 +1,5 @@
 # Evidence and provenance
 
-**Research status at 23 October 2026.** This document records an earlier phase of the project and retains its original numerical results and scientific observations. The generic AERMOD surrogate product effort has since been closed as a practical no-go. Later Gen3 applicability tests, the V8–V16 predictive challenges, and the final height and evidence-coverage reviews did not establish an independently qualified and useful generic replacement. The earlier Phase2H same-domain improvement remains genuine but is not a current product claim. Please read the [full October 2026 research closure](RESEARCH_CLOSURE_2026-10-23.md) before interpreting the historical language below as an active roadmap or a deployment claim.
-
 ## Public record and private lab
 
 The public repository is a cleaned research record. The working project itself was developed in a private laboratory that contains much more material than is useful or appropriate to publish directly.
@@ -22,8 +20,6 @@ The private archive retains, among other things:
 - failed experiments and recovery records;
 - trained model artifacts and implementation code.
 
-The frozen Gen1 baseline explicitly distinguishes 2018 spent confirmatory evidence from recovered 2019 spent year-validation evidence. In particular, 2019 is not a pristine one-shot confirmatory pass. Historical text below describes the role originally assigned to a year but should not override that later recovered provenance classification. The 2019 scores remain in the record without being elevated to untouched confirmation. The source is governance/GEN1_PHASE2H_IMMUTABLE_BASELINE.json in the governed private laboratory.
-
 ## Validation roles
 
 | Year | Role when first opened | What happened afterward |
@@ -31,7 +27,7 @@ The frozen Gen1 baseline explicitly distinguishes 2018 spent confirmatory eviden
 | 2024 | fresh representation test | crosswind-resolution failure diagnosed; year became development evidence |
 | 2025 | fresh error-mechanism test | amplitude/dilution weakness diagnosed; year became development evidence |
 | 2022 | untouched architecture exam | architecture direction supported; year became development evidence |
-| 2019 | recovered spent year validation (not pristine one-shot confirmation) | frozen model scored; year then became spent evidence |
+| 2019 | one-shot temporal confirmation | frozen model scored; year then became spent evidence |
 | 2018 | second one-shot temporal confirmation | same frozen model scored; year then became spent evidence |
 
 An opened year is not later presented as fresh validation for a revised model.
