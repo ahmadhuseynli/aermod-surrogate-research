@@ -15,7 +15,7 @@
       <a href="#decision">Decision</a>
       <a href="#early">Early work</a>
       <a href="#later">Later tests</a>
-      <a href="#lessons">What we learned</a>
+      <a href="#lessons">What we learned</a><a href="closest-matches.html">Closest matches</a>
       <a href="#record">Research record</a>
     </nav>
   </div>
@@ -39,7 +39,7 @@
     <h2>What the first prototype achieved</h2>
     <p>The opening experiment deliberately removed most of AERMOD's wider complexity. It used one elevated point source, passive sulfur dioxide, flat terrain, no downwash and an hourly field on controlled receptor geometry. This made it possible to see which errors came from the data representation and which came from the learner.</p>
     <p>An early angular grid missed the cores of some narrow stable plumes. Training a larger model could not recover information the teacher grid had failed to capture. Plume-relative coordinates, improved sampling and bounded amplitude corrections made the model substantially better. That result was useful, and it remains valid as a research observation.</p>
-    <p>The frozen Phase2H model achieved normalized whole-field L1 of 0.1272474 on 2018 and 0.1312534 on 2019, improving the previous frozen model by 24.72% and 23.77%. The earlier description of around 87% field agreement was simply one minus that particular L1 metric. It did not mean 87% regulatory accuracy or agreement with ambient measurements. More importantly, the largest predicted concentration remained seriously wrong in both magnitude and location. A strong average field score was not enough for the decisions a dispersion model must support.</p>
+    <p>The frozen Phase2H model achieved normalized whole-field L1 of 0.1272474 on 2018 and 0.1312534 on 2019, improving the previous frozen model by 24.72% and 23.77%. The frozen Gen1 evidence record also distinguishes 2018 spent confirmatory evidence from the recovered 2019 spent year validation, which was not a pristine one-shot confirmation. The earlier description of around 87% field agreement was simply one minus that particular L1 metric. It did not mean 87% regulatory accuracy or agreement with ambient measurements. More importantly, the largest predicted concentration remained seriously wrong in both magnitude and location. A strong average field score was not enough for the decisions a dispersion model must support.</p>
   </div>
 </section>
 <section id="later">
@@ -53,6 +53,11 @@
     <p>On 23 October the final review also confirmed that the V16 input builder held stack height, diameter, exit speed and exit temperature fixed. It therefore did not contain the variable-source input mapping required by the original generic objective. A different fixed-stack feasibility study was considered but not authorized. Untouched confirmation, episode-level independence, receptor-geometry consistency and a reconciled resource budget had not been established.</p>
   </div>
 </section>
+<section id="closest"><div class="wrap">
+<h2>Where the models came closest to AERMOD</h2>
+<p>A no-go conclusion does not erase the best restricted predictions. The separately documented cases include a year-scale Phase2H point plume, a 130-hour high-confidence Gen2 class, held-out variable-stack settings, independent multi-point superposition, restricted VOLUME releases, the strong within-year V16 neural result, and remarkably close truth-assisted reconstructions in V10, V11 and V12. They are not comparable accuracy percentages: several of the most precise reconstructions were given AERMOD-derived amplitude or peak information.</p>
+<p>The <a href="closest-matches.html">detailed mathematical chapters</a> describe each case's source conditions, receptor geometry, training and truth roles, equations, metrics and limitations. They also explain why good plume-shape cosine, a small normalized L1 or an exact algebraic identity did not in itself establish a deployable dispersion surrogate.</p>
+</div></section>
 <section id="lessons">
   <div class="wrap">
     <h2>What the work taught me</h2>
