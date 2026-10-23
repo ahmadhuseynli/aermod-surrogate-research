@@ -1,22 +1,26 @@
 cff-version: 1.2.0
-message: "If you refer to this research project, please cite the archived release."
-title: "Atmospheric Dispersion Surrogate Research: AERMOD Emulator Prototype"
+message: "For the final research assessment, cite the project archive and the October 2026 closure."
+title: "Atmospheric Dispersion Surrogate Research: Final Research Closure and No-Go Assessment"
 type: software
 authors:
   - given-names: "Ahmad"
     family-names: "Huseynli"
-version: 0.1.1
-date-released: 2026-09-17
-doi: "10.5281/zenodo.22819728"
+version: 0.2.0
+date-released: 2026-10-23
+doi: "10.5281/zenodo.22819727"
 repository-code: "https://github.com/ahmadhuseynli/aermod-surrogate-research"
 url: "https://ahmadhuseynli.github.io/aermod-surrogate-research/"
 abstract: >-
-  Independent research prototype investigating whether a machine-learning surrogate can reproduce
-  AERMOD-type hourly concentration fields inside a restricted, explicitly validated domain.
+  Final research closure for a generic AERMOD hourly dispersion surrogate.
+  Early restricted-domain modelling improvements are retained alongside the
+  later transfer, peak, applicability and product-feasibility failures.
+  The October 2026 decision is practical no-go for the tested generic product
+  formulation, not a proof against every possible atmospheric surrogate.
 keywords:
   - AERMOD
   - atmospheric dispersion
   - air quality
   - surrogate modelling
   - machine learning
-  - environmental modelling
+  - negative results
+  - research closure
