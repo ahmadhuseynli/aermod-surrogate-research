@@ -1,5 +1,7 @@
 # Results
 
+**Research status at 23 October 2026.** This document records an earlier phase of the project and retains its original numerical results and scientific observations. The generic AERMOD surrogate product effort has since been closed as a practical no-go. Later Gen3 applicability tests, the V8–V16 predictive challenges, and the final height and evidence-coverage reviews did not establish an independently qualified and useful generic replacement. The earlier Phase2H same-domain improvement remains genuine but is not a current product claim. Please read the [full October 2026 research closure](RESEARCH_CLOSURE_2026-10-23.md) before interpreting the historical language below as an active roadmap or a deployment claim.
+
 ## Two untouched year-level checks
 
 The same frozen Phase2H surrogate was scored on 2019 and 2018. Neither year was used to tune that frozen model before its first evaluation.
