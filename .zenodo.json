@@ -5,8 +5,8 @@
       "type": "ProjectMember"
     }
   ],
-  "title": "Atmospheric Dispersion Surrogate Research: Final Research Closure and No-Go Assessment",
-  "version": "0.2.0",
+  "title": "Atmospheric Dispersion Surrogate Research: Closure and Closest-Match Scientific Chapters",
+  "version": "0.3.0",
   "access_right": "open",
   "keywords": [
     "AERMOD",
@@ -16,9 +16,14 @@
     "machine learning",
     "environmental modelling",
     "negative results",
-    "research closure"
+    "research closure",
+    "physics-aware surrogate",
+    "crosswind plume reconstruction",
+    "reproducibility",
+    "conditional oracle",
+    "scientific limitations"
   ],
   "upload_type": "software",
   "language": "eng",
-  "description": "This release records the closure of the generic AERMOD surrogate product objective on 23 October 2026. Early frozen Phase2H tests showed genuine same-domain field improvements but persistent errors in controlling concentration peaks. The later Gen2 and Gen3 programme investigated physical representation, generalization, applicability, regulatory-style routing and alternative predictive designs. The terminal V16 neural-field model passed its blocked 2019 tests but failed eight of ten frozen gate families on selected spent 2025 transfer cases. A subsequent wind-reference-height diagnostic revealed a material computational weakness without producing an acceptable model. The final governed assessment retained a practical no-go for the unchanged generic formulation. The archive preserves positive and negative results and does not claim that all dispersion surrogates are impossible, or that any surrogate is regulatory-equivalent to AERMOD. The full narrative is in RESEARCH_CLOSURE_2026-10-23.md."
+  "description": "This dated research update retains the 23 October 2026 practical no-go for the generic AERMOD surrogate product and publishes a retrospective mathematical account of the strongest restricted-domain matches. The new chapter separates genuinely predictive Gen1 Phase2H, Gen2 sealed high-confidence, targeted variable-stack, bounded multi-POINT and VOLUME, and within-year Gen3 V16 results from the truth-assisted V10–V12 oracle reconstructions. It records source parameters, meteorological and receptor conditions, equations, confidence-selection denominators, the distinction between whole-field and peak errors, and the correction that recovered 2019 Phase2H evidence was not pristine one-shot confirmation. Frozen scientific data and governed evidence remain unchanged. No regulatory equivalence or generic surrogate product success is claimed."
 }
