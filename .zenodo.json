@@ -5,8 +5,8 @@
       "type": "ProjectMember"
     }
   ],
-  "title": "Atmospheric Dispersion Surrogate Research: Closure and Closest-Match Scientific Chapters",
-  "version": "0.3.0",
+  "title": "Atmospheric Dispersion Surrogate Research: Historical Publication Restoration and October Addenda",
+  "version": "0.3.1",
   "access_right": "open",
   "keywords": [
     "AERMOD",
@@ -25,5 +25,5 @@
   ],
   "upload_type": "software",
   "language": "eng",
-  "description": "This dated research update retains the 23 October 2026 practical no-go for the generic AERMOD surrogate product and publishes a retrospective mathematical account of the strongest restricted-domain matches. The new chapter separates genuinely predictive Gen1 Phase2H, Gen2 sealed high-confidence, targeted variable-stack, bounded multi-POINT and VOLUME, and within-year Gen3 V16 results from the truth-assisted V10–V12 oracle reconstructions. It records source parameters, meteorological and receptor conditions, equations, confidence-selection denominators, the distinction between whole-field and peak errors, and the correction that recovered 2019 Phase2H evidence was not pristine one-shot confirmation. Frozen scientific data and governed evidence remain unchanged. No regulatory equivalence or generic surrogate product success is claimed."
+  "description": "Corrective public research release preserving the exact 18 September 2026 pre-closure website and supporting scientific writing while retaining the 23 October practical no-go assessment and the detailed closest-AERMOD-match mathematical chapters as separate dated research publications. The original text is unchanged in a verified historical archive; the active README and homepage reproduce that original prose with distinct later-status notices. This is a publication and provenance correction only. Frozen experiment results, models, thresholds, hashes and research decisions are not modified. Earlier Zenodo releases remain archived unchanged."
 }
