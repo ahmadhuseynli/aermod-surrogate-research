@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Final account of the atmospheric dispersion surrogate research programme, closed as a practical no-go for a generic AERMOD surrogate product in October 2026.">
+  <title>Atmospheric Dispersion Surrogate Research — Final Research Account</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="wrap row">
+    <div class="brand">Atmospheric Dispersion Surrogate Research</div>
+    <nav><a href="index.html">Original publication</a><a href="closest-matches.html">Closest matches</a>
+      <a href="#decision">Decision</a>
+      <a href="#early">Early work</a>
+      <a href="#later">Later tests</a>
+      <a href="#lessons">What we learned</a><a href="closest-matches.html">Closest matches</a>
+      <a href="#record">Research record</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="decision">
+  <div class="wrap">
+    <div class="eyebrow">Independent research | Updated 23 October 2026</div>
+    <h1>Why I am closing the generic AERMOD surrogate project</h1>
+    <p>I started this work to test whether a separate model could learn the hourly concentration response of AERMOD and return complete dispersion fields quickly enough to become useful in repeated engineering calculations. AERMOD was always the teacher and reference. The intended product was the fast prediction engine itself, not another interface for preparing or reporting AERMOD runs.</p>
+    <p>After the initial prototype, a broader Gen2 research programme, regulatory-style Gen3 feasibility work and a terminal sequence of predictive challenges, I have decided to stop development of the generic surrogate as a product. The evidence does not show a model that is accurate enough, transferable enough, independently confirmed across its proposed operating range and useful enough after fallback to justify continued investment in the present approach.</p>
+    <p>This is a practical no-go decision for the formulation we investigated. It is not a statement that every possible AI surrogate for atmospheric dispersion must fail. The details matter because several intermediate experiments succeeded in restricted ways and taught us why later attempts failed.</p>
+    <div class="buttons">
+      <a class="button" href="https://github.com/ahmadhuseynli/aermod-surrogate-research/blob/main/RESEARCH_CLOSURE_2026-10-23.md">Read the full research closure</a>
+      <a class="button secondary" href="https://github.com/ahmadhuseynli/aermod-surrogate-research">Public research archive</a>
+    </div>
+  </div>
+</section>
+<section id="early">
+  <div class="wrap">
+    <h2>What the first prototype achieved</h2>
+    <p>The opening experiment deliberately removed most of AERMOD's wider complexity. It used one elevated point source, passive sulfur dioxide, flat terrain, no downwash and an hourly field on controlled receptor geometry. This made it possible to see which errors came from the data representation and which came from the learner.</p>
+    <p>An early angular grid missed the cores of some narrow stable plumes. Training a larger model could not recover information the teacher grid had failed to capture. Plume-relative coordinates, improved sampling and bounded amplitude corrections made the model substantially better. That result was useful, and it remains valid as a research observation.</p>
+    <p>The frozen Phase2H model achieved normalized whole-field L1 of 0.1272474 on 2018 and 0.1312534 on 2019, improving the previous frozen model by 24.72% and 23.77%. The frozen Gen1 evidence record also distinguishes 2018 spent confirmatory evidence from the recovered 2019 spent year validation, which was not a pristine one-shot confirmation. The earlier description of around 87% field agreement was simply one minus that particular L1 metric. It did not mean 87% regulatory accuracy or agreement with ambient measurements. More importantly, the largest predicted concentration remained seriously wrong in both magnitude and location. A strong average field score was not enough for the decisions a dispersion model must support.</p>
+  </div>
+</section>
+<section id="later">
+  <div class="wrap">
+    <h2>What happened when the tests became more demanding</h2>
+    <p>Gen2 extended the controlled science of source conditions, atmospheric information, receptor interactions, generalization and applicability. Its mature bounded closure is preserved. It did not establish the full reusable engineering product. Gen3 then tested how often a bounded surrogate could handle a complete task without requiring AERMOD for most of the cases.</p>
+    <p>The original five-year E04 comparison was paused rather than completed. The one-year E04S screening experiment found that significant fractions of the examined hours were outside the frozen applicability rules. Those out-of-domain findings were not concentration-error measurements. In the separate E04A daily routing test, only zero, two or 132 of 1,460 scenario-days, depending on the frozen scope, could be assigned to the surrogate. The branch closed before opening its reserved AERMOD truth because the output would chiefly describe AERMOD fallback. That could not demonstrate the computational value we needed.</p>
+    <p>The V8–V16 research programme explored whether the concentration field could instead be learned through amplitude, width, peak and meander factorization, better input representations or a direct neural field. Truth-assisted reconstructions were sometimes strikingly accurate, but they relied on quantities derived from the answer. The true predictive models still had to infer those quantities from the inputs available in a new case, and that was where convective, low-wind and peak behaviour remained difficult.</p>
+    <p>The terminal V16 model passed all ten frozen test families on a blocked 2019 holdout, then only two of ten on 64 already-spent selected 2025 transfer hours. Its relative field L1 on that transfer set was 0.525702, with low-wind L1 of 3.228091 and aggregate signed bias of plus 50.65%. Those are selected stress/development conditions, not a new untouched year-level confirmation and not a representative annual failure rate. Even with that limitation, they were more than enough to reject the claim that this particular model had demonstrated usable transfer.</p>
+    <p>The final audit identified an important technical mechanism. The neural network had seen only 10-metre wind-reference height during training, while the selected 2025 cases used 7.9 metres. The corresponding weight direction was never learned. Disabling that unsupported direction reduced the transfer field L1 to 0.243881, but the diagnostic still passed only six of ten criteria. It was evidence of a real computational weakness, not a validated repaired product. Earlier tree-model failures were not explained by this neural issue.</p>
+    <p>On 23 October the final review also confirmed that the V16 input builder held stack height, diameter, exit speed and exit temperature fixed. It therefore did not contain the variable-source input mapping required by the original generic objective. A different fixed-stack feasibility study was considered but not authorized. Untouched confirmation, episode-level independence, receptor-geometry consistency and a reconciled resource budget had not been established.</p>
+  </div>
+</section>
+<section id="closest"><div class="wrap">
+<h2>Where the models came closest to AERMOD</h2>
+<p>A no-go conclusion does not erase the best restricted predictions. The separately documented cases include a year-scale Phase2H point plume, a 130-hour high-confidence Gen2 class, held-out variable-stack settings, independent multi-point superposition, restricted VOLUME releases, the strong within-year V16 neural result, and remarkably close truth-assisted reconstructions in V10, V11 and V12. They are not comparable accuracy percentages: several of the most precise reconstructions were given AERMOD-derived amplitude or peak information.</p>
+<p>The <a href="closest-matches.html">detailed mathematical chapters</a> describe each case's source conditions, receptor geometry, training and truth roles, equations, metrics and limitations. They also explain why good plume-shape cosine, a small normalized L1 or an exact algebraic identity did not in itself establish a deployable dispersion surrogate.</p>
+</div></section>
+<section id="lessons">
+  <div class="wrap">
+    <h2>What the work taught me</h2>
+    <p>The strongest lesson was not that machine learning cannot draw a plume. It can. The harder problem is predicting the right amplitude and spatial distribution under physically different conditions without borrowing information from AERMOD truth. A stable plume that is poorly sampled by the teacher will remain hard to reconstruct. A model that performs well on average can still miss the controlling maximum. Receptors from one meteorological hour are not independent training events. A confident-looking prediction can sit outside a physical direction the learner has ever seen. And an applicability rule that refuses nearly every important case leaves the proposed product with little value, even when that refusal is scientifically appropriate.</p>
+    <p>Equally important was the discipline around evidence. A meteorological year used to diagnose and improve a model cannot later be presented as untouched confirmation. A teacher-truth opening cannot be undone. A technical retry can repair a machine failure but does not authorize different scientific thresholds. A reconstruction driven by truth-derived amplitudes is not proof that the same field can be forecast. The archive retains the unsuccessful branches because they explain these distinctions better than a success-only history.</p>
+    <p>The purpose of the project was a fast and trustworthy AERMOD-type computation engine. That has not been established. I am preserving the models, run records and negative evidence, but not continuing an open-ended search through further architectures under the same formulation. A genuinely different future research hypothesis would have to begin with its own independent validation and engineering benchmark.</p>
+  </div>
+</section>
+<section id="record">
+  <div class="wrap">
+    <h2>The research record remains available</h2>
+    <p>The <a href="https://github.com/ahmadhuseynli/aermod-surrogate-research/blob/main/RESEARCH_CLOSURE_2026-10-23.md">full October 2026 closure</a> describes the main experiments, numbers, limitations and the reasons for stopping. The <a href="https://github.com/ahmadhuseynli/aermod-surrogate-research">public GitHub repository</a> preserves the earlier methodology and development notes, including the positive Phase2H result. The <a href="https://doi.org/10.5281/zenodo.23604369">Zenodo expanded research release (version 0.3.0)</a> preserves this final account. The <a href="https://doi.org/10.5281/zenodo.22819728">earlier version 0.1.1</a> and <a href="assets/AERMOD_SURROGATE_TECHNICAL_NOTE_v0.1.pdf">original technical note</a> remain historical records of the prototype. Their earlier optimism should be read alongside the later negative results.</p>
+    <p>This was independent research, without affiliation with or endorsement by the United States Environmental Protection Agency. No surrogate produced in this programme is presented as an approved replacement for AERMOD. Formal regulatory modelling must continue to follow the applicable AERMOD procedures.</p>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">Atmospheric Dispersion Surrogate Research | Research closure dated 23 October 2026 | Final version DOI 10.5281/zenodo.23604369 | Project DOI 10.5281/zenodo.22819727</div>
+</footer>
+</body>
+</html>
